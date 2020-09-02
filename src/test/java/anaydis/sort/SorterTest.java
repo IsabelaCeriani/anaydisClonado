@@ -10,10 +10,10 @@ abstract class SorterTest extends AbstractSorterTest {
     }
 
     @Override protected DataSetGenerator<Integer> createIntegerDataSetGenerator() {
-        throw new IllegalStateException("To be implemented!");
+        return new IntegerDataSetGenerator();
     }
 
     @Override protected SorterProvider getSorterProvider() {
-        throw new IllegalStateException("To be implemented!");
+        return new SorterProviderClass();
     }
 }
