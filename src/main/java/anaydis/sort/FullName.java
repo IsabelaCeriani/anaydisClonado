@@ -1,10 +1,10 @@
 package anaydis.sort;
 
-import java.util.Comparator;
+
 
 public class FullName{
-    private String firstname;
-    private String lastname;
+    private final String firstname;
+    private final String lastname;
 
     public FullName(String firstname, String lastname) {
         this.firstname = firstname;
@@ -19,11 +19,4 @@ public class FullName{
     }
 
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
 }

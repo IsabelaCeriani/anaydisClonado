@@ -1,6 +1,6 @@
 package anaydis.sort;
 
-import org.junit.Assert;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Exercise3Test {
 
     Exercise3 exercise3 = new Exercise3();
+
 
     FullName alonsoPaula;
     FullName diazDiego;
