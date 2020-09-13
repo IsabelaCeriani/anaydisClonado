@@ -16,6 +16,7 @@ public class MyTest extends SorterTest {
     InsertionSorter insertionSorter = new InsertionSorter();
     HSorter hSorter = new HSorter();
     ShellSorter shellSorter = new ShellSorter(hSorter);
+    QuickSorter quickSorter = new QuickSorter();
 
     DataSetGenerator<Integer> integerDataSetGenerator=  createIntegerDataSetGenerator();
     Comparator<Integer> integerComparator = integerDataSetGenerator.getComparator();
@@ -66,6 +67,23 @@ public class MyTest extends SorterTest {
         shellSorter.sort(stringComparator, randomStringList);
         assertThat(randomStringList).isSorted();
 
+    }
+
+    @Test
+    public void testQuickSorterAverageCaseWithString(){
+        List<String> randomStringList = stringDataSetGenerator.createRandom(10);
+        quickSorter.sort(stringComparator, randomStringList);
+        assertThat(randomStringList).isSorted();
+
+    }
+
+
+    @Test
+    public void testQuickSorterAverageCaseWithInteger(){
+        List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(10);
+        quickSorter.sort(integerComparator, randomIntegerList);
+
+        assertThat(randomIntegerList).isSorted();
 
     }
 
