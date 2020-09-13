@@ -20,6 +20,12 @@ public class TestPractice02 extends SorterTest {
         testSorter(createIntegerDataSetGenerator(), SorterType.BUBBLE, 50);
         testSorter(createIntegerDataSetGenerator(), SorterType.BUBBLE, 100);
     }
+    /** Test BubbleSorter with Integer generator. */
+    @Test public void testHWithIntegerGenerator() {
+        testSorter(createIntegerDataSetGenerator(), SorterType.H, 10);
+        testSorter(createIntegerDataSetGenerator(), SorterType.H, 50);
+        testSorter(createIntegerDataSetGenerator(), SorterType.H, 100);
+    }
 
     /** Test InsertionSorter with String generator. */
     @Test public void testInsertionWithStringGenerator() {

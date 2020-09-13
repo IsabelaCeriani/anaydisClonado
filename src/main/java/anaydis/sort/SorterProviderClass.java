@@ -19,6 +19,10 @@ public class SorterProviderClass implements SorterProvider{
         sorters.put(SorterType.BUBBLE, new BubbleSorter());
         sorters.put(SorterType.SELECTION, new SelectionSorter());
         sorters.put(SorterType.INSERTION, new InsertionSorter());
+        HSorter hSorter = new HSorter();
+        sorters.put(SorterType.H, hSorter);
+        sorters.put(SorterType.QUICK, new QuickSorter());
+        sorters.put(SorterType.SHELL, new ShellSorter(hSorter));
     }
 
     @NotNull

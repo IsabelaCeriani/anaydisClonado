@@ -15,9 +15,11 @@ public class ShellSorter extends AbstractSorter {
 
     @Override
     public <T> void sort(@NotNull Comparator<T> comparator, @NotNull List<T> list) {
-        int l = 0; //left
-        int r = list.size(); //right
+        sort(comparator, list, 0, list.size());
 
+    }
+
+    public <T> void sort(@NotNull Comparator<T> comparator, @NotNull List<T> list, int l, int r) {
         for (int h = 1; h <= (r-l)/9 ; h= 3+h+1) {
             for ( ; h > 0; h /= 3) {
                 hSorter.sort(comparator, list,h);
@@ -25,6 +27,8 @@ public class ShellSorter extends AbstractSorter {
         }
 
     }
+
+
 
     @NotNull
     @Override

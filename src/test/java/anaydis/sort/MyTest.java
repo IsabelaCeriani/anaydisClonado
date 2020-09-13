@@ -51,9 +51,10 @@ public class MyTest extends SorterTest {
         assertThat(listToTest).isEqualTo(correctList);
 
     }
-    /** Test best case for BubbleSorter with an IntegerList. */
+
+
     @Test
-    public void testShellSorterWithInteger(){
+    public void testShellSorterAverageCaseWithInteger(){
         List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(10);
         shellSorter.sort(integerComparator, randomIntegerList);
 
@@ -62,8 +63,24 @@ public class MyTest extends SorterTest {
     }
 
     @Test
-    public void testShellSorterWithString(){
+    public void testShellSorterAverageCaseWithString(){
         List<String> randomStringList = stringDataSetGenerator.createRandom(10);
+        shellSorter.sort(stringComparator, randomStringList);
+        assertThat(randomStringList).isSorted();
+
+    }
+
+    @Test
+    public void testShellSorterBestCaseWithString(){
+        List<String> randomStringList = stringDataSetGenerator.createAscending(10);
+        shellSorter.sort(stringComparator, randomStringList);
+        assertThat(randomStringList).isSorted();
+
+    }
+
+    @Test
+    public void testShellSorterWorstCaseWithString(){
+        List<String> randomStringList = stringDataSetGenerator.createDescending(10);
         shellSorter.sort(stringComparator, randomStringList);
         assertThat(randomStringList).isSorted();
 
@@ -97,7 +114,7 @@ public class MyTest extends SorterTest {
         assertThat(ascendingIntegerList).isSorted();
     }
 
-    /** Tests greater with Strin*/
+    /** Tests greater with String*/
     @Test
     public void testGreaterString(){
         List<String> listToTest = new ArrayList<>();
