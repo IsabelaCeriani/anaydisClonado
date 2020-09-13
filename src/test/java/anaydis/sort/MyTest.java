@@ -14,6 +14,8 @@ public class MyTest extends SorterTest {
     BubbleSorter bubbleSorter = new BubbleSorter();
     SelectionSorter selectionSorter = new SelectionSorter();
     InsertionSorter insertionSorter = new InsertionSorter();
+    HSorter hSorter = new HSorter();
+    ShellSorter shellSorter = new ShellSorter(hSorter);
 
     DataSetGenerator<Integer> integerDataSetGenerator=  createIntegerDataSetGenerator();
     Comparator<Integer> integerComparator = integerDataSetGenerator.getComparator();
@@ -49,6 +51,25 @@ public class MyTest extends SorterTest {
 
     }
     /** Test best case for BubbleSorter with an IntegerList. */
+    @Test
+    public void testShellSorterWithInteger(){
+        List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(10);
+        shellSorter.sort(integerComparator, randomIntegerList);
+
+        assertThat(randomIntegerList).isSorted();
+
+    }
+
+    @Test
+    public void testShellSorterWithString(){
+        List<String> randomStringList = stringDataSetGenerator.createRandom(10);
+        shellSorter.sort(stringComparator, randomStringList);
+        assertThat(randomStringList).isSorted();
+
+
+    }
+
+
     @Test
     public void testBubbleBestCaseInteger() {
         List<Integer> ascendingIntegerList = integerDataSetGenerator.createAscending(500);

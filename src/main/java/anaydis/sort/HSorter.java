@@ -22,16 +22,16 @@ public class HSorter extends AbstractSorter {
     public <T> void sort(Comparator<T> comparator, List<T> list, int h) {
         int l = 0;
         for (int i = l + h; i < list.size(); i++) {
-            int j = i;
-            while (j >= i) {
-                if (greater(comparator, list, j - h, j)) {
+            for (int j = i; j >0 ; j -=h) {
+                if (greater(comparator, list, j-h, j)) {
                     swap(list, j, j - h);
                 }
-                j -= h;
             }
-        }
-    }
 
+
+        }
+
+    }
 
 
 

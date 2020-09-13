@@ -19,8 +19,8 @@ public class ShellSorter extends AbstractSorter {
         int r = list.size(); //right
 
         for (int h = 1; h <= (r-l)/9 ; h= 3+h+1) {
-            for ( ; h > 0; h /= 3) { //while(h>0){......  h/=3}
-                hSorter.sort(comparator, list);
+            for ( ; h > 0; h /= 3) {
+                hSorter.sort(comparator, list,h);
             }
         }
 
