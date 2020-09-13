@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Comparator;
 import java.util.List;
 
-public class Exercise3 {
+public class FullNameSorter {
 
     //Elijo el InsertionSorter ya que en el ejercicio 2 fue el que mejor performo para el average cae
 

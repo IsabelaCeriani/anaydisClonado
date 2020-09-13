@@ -1,11 +1,13 @@
 package anaydis.sort;
 
+import anaydis.sort.SorterType;
+import anaydis.sort.AbstractSorter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
 import java.util.List;
 
-public class BubbleSorter extends AbstractSorter{
+public class BubbleSorter extends AbstractSorter {
 
     public BubbleSorter() {
         this.sorterType = getType();

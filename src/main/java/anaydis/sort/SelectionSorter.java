@@ -1,5 +1,7 @@
 package anaydis.sort;
 
+
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
@@ -14,7 +16,7 @@ public class SelectionSorter extends AbstractSorter {
     @Override
     public <T> void sort(@NotNull Comparator<T> comparator, @NotNull List<T> list) {
         int min;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size()-1; i++) {
             min = i;
 
             for (int j = i + 1; j < list.size(); j++) {

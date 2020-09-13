@@ -8,9 +8,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class Exercise3Test {
+public class FullNameSorterTest {
 
-    Exercise3 exercise3 = new Exercise3();
+    FullNameSorter fullNameSorter = new FullNameSorter();
 
 
     FullName alonsoPaula;
@@ -34,7 +34,7 @@ public class Exercise3Test {
     @Test
     public void testSortByName(){
         List<String> auxNames = new ArrayList<>();
-        exercise3.sortByName(fullNames);
+        fullNameSorter.sortByName(fullNames);
         fullNames.forEach(fullName -> auxNames.add(fullName.getFirstname()));
         assertThat(auxNames).isSorted();
     }
@@ -42,15 +42,15 @@ public class Exercise3Test {
     @Test
     public void testSortByLastName(){
         List<String> auxLastNames = new ArrayList<>();
-        exercise3.sortByLastName(fullNames);
+        fullNameSorter.sortByLastName(fullNames);
         fullNames.forEach(fullName -> auxLastNames.add(fullName.getLastname()));
         assertThat(auxLastNames).isSorted();
     }
 
     @Test
     public void testSort(){
-        exercise3.sort(fullNames);
-        assertThat(fullNames).isSortedAccordingTo(exercise3.getNameComparator());
+        fullNameSorter.sort(fullNames);
+        assertThat(fullNames).isSortedAccordingTo(fullNameSorter.getNameComparator());
 
     }
 

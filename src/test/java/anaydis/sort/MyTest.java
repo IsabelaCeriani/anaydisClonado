@@ -48,6 +48,16 @@ public class MyTest extends SorterTest {
         assertThat(listToTest).isEqualTo(correctList);
 
     }
+    /** Test best case for BubbleSorter with an IntegerList. */
+    @Test
+    public void testBubbleBestCaseInteger() {
+        List<Integer> ascendingIntegerList = integerDataSetGenerator.createAscending(500);
+        bubbleSorter.sort(integerComparator, ascendingIntegerList);
+
+
+        assertThat(ascendingIntegerList).isSorted();
+    }
+
     /** Tests greater with Strin*/
     @Test
     public void testGreaterString(){
@@ -72,16 +82,6 @@ public class MyTest extends SorterTest {
         correctList.add("a");
 
         assertThat(listToTest).isEqualTo(correctList);
-    }
-
-    /** Test best case for BubbleSorter with an IntegerList. */
-    @Test
-    public void testBubbleBestCaseInteger() {
-        List<Integer> ascendingIntegerList = integerDataSetGenerator.createAscending(500);
-        bubbleSorter.sort(integerComparator, ascendingIntegerList);
-
-
-        assertThat(ascendingIntegerList).isSorted();
     }
 
     /** Test best case for BubbleSorter with a StringList. */

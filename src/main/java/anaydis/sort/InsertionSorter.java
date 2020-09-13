@@ -1,5 +1,6 @@
 package anaydis.sort;
 
+import anaydis.sort.SorterType;
 import org.jetbrains.annotations.NotNull;
 
 
