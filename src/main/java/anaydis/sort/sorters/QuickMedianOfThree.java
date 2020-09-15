@@ -9,7 +9,7 @@ import java.util.List;
 public class QuickMedianOfThree extends QuickSorter {
 
     private final int medianValue;
-    private InsertionSorter insertionSorter;
+    private final  InsertionSorter insertionSorter;
 
     public QuickMedianOfThree(InsertionSorter insertionSorter, int medianValue) {
         this.medianValue = medianValue;

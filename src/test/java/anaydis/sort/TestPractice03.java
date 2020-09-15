@@ -1,7 +1,6 @@
 package anaydis.sort;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+
 import org.junit.Test;
 
 public class TestPractice03 extends SorterTest{
@@ -61,7 +60,7 @@ public class TestPractice03 extends SorterTest{
         testSorter(createStringDataSetGenerator(), SorterType.QUICK_NON_RECURSIVE, 100);
     }
     /** Test QuickCutoff with Integer generator. */
-    @Test public void testQuicCutkWithIntegerGenerator() {
+    @Test public void testQuickCutWithIntegerGenerator() {
         testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_CUT, 10);
         testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_CUT, 50);
         testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_CUT, 100);
