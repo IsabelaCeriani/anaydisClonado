@@ -1,6 +1,8 @@
-package anaydis.sort;
+package anaydis.sort.sorters;
 
 
+import anaydis.sort.sorters.AbstractSorter;
+import anaydis.sort.SorterType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
@@ -25,31 +27,6 @@ public class QuickSorter  extends AbstractSorter {
 
 
 
-    public<T> int partition(@NotNull Comparator<T> comparator, @NotNull List<T> list, int left, int right) {
-        int i = left-1;
-        int j = right;
-
-        while(true) {
-            while(greater(comparator, list, right,++i)){
-                if (i == right)
-                    break;
-            }
-            while(greater(comparator, list, --j,right )) {
-                if (j == left)
-                    break;
-            }
-            if (i >= j)
-                break;
-
-            swap(list, i, j);
-
-        }
-        swap(list, i, right);
-        return i;
-
-
-
-    }
 
 
 

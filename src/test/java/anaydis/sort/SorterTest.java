@@ -1,5 +1,8 @@
 package anaydis.sort;
 
+import anaydis.sort.dataSetGenerators.IntegerDataSetGenerator;
+import anaydis.sort.dataSetGenerators.StringDataSetGenerator;
+
 /**
  * Sorter tests should subclass this abstract implementation
  */

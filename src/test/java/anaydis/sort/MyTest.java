@@ -1,4 +1,7 @@
 package anaydis.sort;
+import anaydis.sort.sorters.QuickCutOff;
+import anaydis.sort.sorters.QuickSorter;
+import anaydis.sort.sorters.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,6 +20,7 @@ public class MyTest extends SorterTest {
     HSorter hSorter = new HSorter();
     ShellSorter shellSorter = new ShellSorter(hSorter);
     QuickSorter quickSorter = new QuickSorter();
+    QuickCutOff quickCutOff = new QuickCutOff(insertionSorter, 6);
 
     DataSetGenerator<Integer> integerDataSetGenerator=  createIntegerDataSetGenerator();
     Comparator<Integer> integerComparator = integerDataSetGenerator.getComparator();
@@ -55,16 +59,17 @@ public class MyTest extends SorterTest {
 
     @Test
     public void testShellSorterAverageCaseWithInteger(){
-        List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(10);
+        List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(100);
         shellSorter.sort(integerComparator, randomIntegerList);
 
         assertThat(randomIntegerList).isSorted();
 
     }
 
+
     @Test
     public void testShellSorterAverageCaseWithString(){
-        List<String> randomStringList = stringDataSetGenerator.createRandom(10);
+        List<String> randomStringList = stringDataSetGenerator.createRandom(36);
         shellSorter.sort(stringComparator, randomStringList);
         assertThat(randomStringList).isSorted();
 
@@ -72,11 +77,13 @@ public class MyTest extends SorterTest {
 
     @Test
     public void testShellSorterBestCaseWithString(){
-        List<String> randomStringList = stringDataSetGenerator.createAscending(10);
+        List<String> randomStringList = stringDataSetGenerator.createAscending(44);
         shellSorter.sort(stringComparator, randomStringList);
         assertThat(randomStringList).isSorted();
 
     }
+
+
 
     @Test
     public void testShellSorterWorstCaseWithString(){
@@ -104,7 +111,14 @@ public class MyTest extends SorterTest {
 
     }
 
+    @Test
+    public void testQuickCutoffSorterAverageCaseWithInteger(){
+        List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(10);
+        quickCutOff.sort(integerComparator, randomIntegerList);
 
+        assertThat(randomIntegerList).isSorted();
+
+    }
     @Test
     public void testBubbleBestCaseInteger() {
         List<Integer> ascendingIntegerList = integerDataSetGenerator.createAscending(500);

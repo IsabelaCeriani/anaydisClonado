@@ -1,5 +1,7 @@
 package anaydis.sort;
 
+import anaydis.sort.dataSetGenerators.IntegerDataSetGenerator;
+import anaydis.sort.dataSetGenerators.StringDataSetGenerator;
 import org.junit.Test;
 
 import java.util.List;

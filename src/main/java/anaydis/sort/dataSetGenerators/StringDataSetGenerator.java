@@ -1,10 +1,11 @@
-package anaydis.sort;
+package anaydis.sort.dataSetGenerators;
 
+import anaydis.sort.DataSetGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class StringDataSetGenerator implements DataSetGenerator<String>{
+public class StringDataSetGenerator implements DataSetGenerator<String> {
 
     @NotNull
     @Override
