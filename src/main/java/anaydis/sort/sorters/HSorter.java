@@ -11,18 +11,6 @@ public class HSorter extends AbstractSorter {
 
 
 
-//    public <T> void sort(Comparator<T> comparator, List<T> list,int l, int r, int h) {
-//        for (int i = l + h; i < r; i++) {
-//            for (int j = i; j >=l+h ; j -=h) {
-//                if (greater(comparator, list, j-h, j)) {
-//                    swap(list, j, j - h);
-//                }
-//            }
-//
-//
-//        }
-//
-//    }
 
     public <T> void sort(@NotNull Comparator<T> comparator,@NotNull List<T> list, int gap) {
         for (int j = gap; j < list.size(); j++) {

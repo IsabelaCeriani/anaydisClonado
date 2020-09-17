@@ -12,6 +12,20 @@ public class TestPractice03 extends SorterTest{
         testSorter(createIntegerDataSetGenerator(), SorterType.H, 50);
         testSorter(createIntegerDataSetGenerator(), SorterType.H, 100);
     }
+    @Test
+    public void testQuickThreeWithIntegerGenerator() {
+//        testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 10);
+//        testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 50);
+//        testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 100);
+    }
+
+    /** Test H with different gap Integer generator. */
+    @Test
+    public void testHGappedWithIntegerGenerator() {
+        testSorter(createIntegerDataSetGenerator(), SorterType.H, 10);
+        testSorter(createIntegerDataSetGenerator(), SorterType.H, 50);
+        testSorter(createIntegerDataSetGenerator(), SorterType.H, 100);
+    }
 
     /** Test H with String generator. */
     @Test public void testHWithStringGenerator() {

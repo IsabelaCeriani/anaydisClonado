@@ -8,11 +8,11 @@ import java.util.List;
 
 public class QuickMedianOfThree extends QuickSorter {
 
-    private final int medianValue;
+    private final int cutOff;
     private final  InsertionSorter insertionSorter;
 
-    public QuickMedianOfThree(InsertionSorter insertionSorter, int medianValue) {
-        this.medianValue = medianValue;
+    public QuickMedianOfThree(InsertionSorter insertionSorter, int cutOff) {
+        this.cutOff = cutOff;
         this.insertionSorter = insertionSorter;
     }
 
@@ -23,8 +23,9 @@ public class QuickMedianOfThree extends QuickSorter {
     }
 
     public <T> void sort(@NotNull Comparator<T> comparator, @NotNull List<T> list, int l, int r) {
-        if (r-l <= medianValue) return;
-        swap(list, (l+r)/2, r-1);
+        if (r-l <= cutOff) return;
+        int middleValue = (l+r)/2;
+        swap(list, middleValue, r-1);
         checkSwap(list,comparator, l, r-1);
         checkSwap(list,comparator, l, r);
         checkSwap(list,comparator, r-1, r);
@@ -32,6 +33,7 @@ public class QuickMedianOfThree extends QuickSorter {
         sort(comparator, list, l, i-1);
         sort(comparator, list, i+1, r);
     }
+
 
 
 

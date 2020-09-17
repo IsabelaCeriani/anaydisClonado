@@ -31,6 +31,7 @@ public class SorterProviderClass implements SorterProvider{
         sorters.put(SorterType.QUICK_NON_RECURSIVE, new QuickNonRecursive());
         sorters.put(SorterType.QUICK_CUT, new QuickCutOff(insertionSorter, 6));
         sorters.put(SorterType.QUICK_MED_OF_THREE, new QuickMedianOfThree(insertionSorter, 6));
+        sorters.put(SorterType.QUICK_THREE_PARTITION, new QuickThreePartition());
     }
 
     @NotNull

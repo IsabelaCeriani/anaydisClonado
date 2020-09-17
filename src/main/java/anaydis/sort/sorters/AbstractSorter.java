@@ -3,8 +3,8 @@ package anaydis.sort.sorters;
 import anaydis.sort.SorterType;
 import anaydis.sort.gui.ObservableSorter;
 import anaydis.sort.gui.SorterListener;
+import anaydis.sort.listeners.OrderSorterListener;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -20,15 +20,25 @@ public abstract class AbstractSorter implements ObservableSorter {
     protected AbstractSorter() {
         sorterType = null;
         listeners = new ArrayList<>();
+
     }
 
     //returns true if the element at minIndex < j
     public <T> boolean greater(@NotNull Comparator<T> comparator, List<T> list, int minIndex, int j) {
+        for (SorterListener listener: listeners) {
+            if(listener instanceof OrderSorterListener) listener.greater(minIndex, j);
+        }
         return comparator.compare(list.get(minIndex), list.get(j)) > 0;
+
     }
 
 
     public <T> void swap(@NotNull List<T> list, int i, int min) {
+        for (SorterListener listener: listeners) {
+            if(listener instanceof OrderSorterListener) listener.swap(i, min);
+        }
+
+
         T obj =  list.get(i);
         list.set(i, list.get(min));
         list.set(min, obj);
@@ -61,9 +71,15 @@ public abstract class AbstractSorter implements ObservableSorter {
     }
 
     <T> void checkSwap(List<T> list, @NotNull Comparator<T> comparator, int left, int right){
-        if(greater(comparator, list, left, right))
+        for (SorterListener listener: listeners) {
+            if(listener instanceof OrderSorterListener) listener.greater(left, right);
+        }
+        if(greater(comparator, list, left, right)) {
             swap(list, left, right);
-
+            for (SorterListener listener: listeners) {
+                if(listener instanceof OrderSorterListener) listener.swap(left, right);
+            }
+        }
     }
 
 

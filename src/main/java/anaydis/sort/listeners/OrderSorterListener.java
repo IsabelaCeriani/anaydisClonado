@@ -5,7 +5,8 @@ import anaydis.sort.gui.SorterListener;
 public class OrderSorterListener implements SorterListener {
 
 
-    private final int greater = 0;
+    private int greaters;
+    private int swaps;
 
     @Override
     public void box(int from, int to) {
@@ -24,11 +25,23 @@ public class OrderSorterListener implements SorterListener {
 
     @Override
     public void greater(int i, int j) {
-
+            greaters++;
     }
 
     @Override
     public void swap(int i, int j) {
+        swaps++;
+    }
 
+    public int getOrder(){
+        return greaters + swaps;
+    }
+
+    public int getGreaters() {
+        return greaters;
+    }
+
+    public int getSwaps() {
+        return swaps;
     }
 }
