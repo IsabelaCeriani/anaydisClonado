@@ -24,9 +24,9 @@ public class BenchResult {
 
 
     public String toString(){
-        return "nSize: " + dataSize + "\n" + "Times executed: " + timesExecuted + "\n" + "Data arrangement: " +
-                dataArrangement + "\n" + "Sorter type: " + sorterType + "\n" + "Order: " + orderPerformance + "\n"
-                + "Time: " + timePerformance;
+        return "nSize= " + dataSize + "\n" + "Times executed= " + timesExecuted + "\n" + "Data arrangement= " +
+                dataArrangement + "\n" + "Sorter type= " + sorterType + "\n" + "Order= " + orderPerformance + "\n"
+                + "Time= " + timePerformance;
     }
 
     public int calculateAverage(int [] results){

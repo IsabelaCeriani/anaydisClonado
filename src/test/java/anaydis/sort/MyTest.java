@@ -1,7 +1,5 @@
 package anaydis.sort;
-import anaydis.sort.benchmarks.BenchResult;
 import anaydis.sort.benchmarks.BenchResultsGenerator;
-import anaydis.sort.gui.SorterListener;
 import anaydis.sort.listeners.OrderSorterListener;
 import anaydis.sort.sorters.QuickCutOff;
 import anaydis.sort.sorters.QuickSorter;
@@ -12,7 +10,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,6 +22,9 @@ public class MyTest extends SorterTest {
     ShellSorter shellSorter = new ShellSorter(hSorter);
     QuickSorter quickSorter = new QuickSorter();
     QuickCutOff quickCutOff = new QuickCutOff(insertionSorter, 6);
+    QuickThreePartition quickThreePartition = new QuickThreePartition();
+    MergeTopDown mergeTopDown = new MergeTopDown();
+    MergeBottomUp mergeBottomUp = new MergeBottomUp();
 
     DataSetGenerator<Integer> integerDataSetGenerator=  createIntegerDataSetGenerator();
     Comparator<Integer> integerComparator = integerDataSetGenerator.getComparator();
@@ -33,6 +33,12 @@ public class MyTest extends SorterTest {
     Comparator<String> stringComparator = stringDataSetGenerator.getComparator();
 
     OrderSorterListener orderSorterListener = new OrderSorterListener();
+
+
+
+
+
+
 
 
     /** Tests sorter greater with integers*/
@@ -365,4 +371,51 @@ public class MyTest extends SorterTest {
         insertionSorter.sort(stringComparator, randomStringList);
         assertThat(randomStringList).isSorted();
     }
+    @Test
+    public void testQuickThreePartitionAverageCaseInteger() {
+        List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(10);
+        quickThreePartition.sort(integerComparator, randomIntegerList);
+
+
+        assertThat(randomIntegerList).isSorted();
+    }
+    @Test
+    public void testQuickThreePartitionAverageCaseString() {
+        List<String> randomStringList = stringDataSetGenerator.createRandom(10);
+        quickThreePartition.sort(stringComparator, randomStringList);
+        assertThat(randomStringList).isSorted();
+    }
+
+    @Test
+    public void testMergeTopDownPartitionAverageCaseInteger() {
+        List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(10);
+        mergeTopDown.sort(integerComparator, randomIntegerList);
+
+
+        assertThat(randomIntegerList).isSorted();
+    }
+    /** Test average case for InsertionSorter with a StringList...... */
+    @Test
+    public void testMergeTopDownThreePartitionAverageCaseString() {
+        List<String> randomStringList = stringDataSetGenerator.createRandom(10);
+        mergeTopDown.sort(stringComparator, randomStringList);
+        assertThat(randomStringList).isSorted();
+    }
+
+    @Test
+    public void testMergeBottomUpPartitionAverageCaseInteger() {
+        List<Integer> randomIntegerList = integerDataSetGenerator.createRandom(10);
+        mergeBottomUp.sort(integerComparator, randomIntegerList);
+
+
+        assertThat(randomIntegerList).isSorted();
+    }
+    /** Test average case for InsertionSorter with a StringList...... */
+    @Test
+    public void testMergeBottomUpThreePartitionAverageCaseString() {
+        List<String> randomStringList = stringDataSetGenerator.createRandom(10);
+        mergeBottomUp.sort(stringComparator, randomStringList);
+        assertThat(randomStringList).isSorted();
+    }
+
 }

@@ -8,8 +8,9 @@ import java.util.List;
 
 public class QuickCutOff extends QuickSorter {
 
+
     private final InsertionSorter insertionSorter;
-    private final int cutIndex;
+    private  int cutIndex;
 
 
 
@@ -39,6 +40,9 @@ public class QuickCutOff extends QuickSorter {
 
     }
 
+    public void setCutIndex(int cutIndex) {
+        this.cutIndex = cutIndex;
+    }
 
     @NotNull
     @Override

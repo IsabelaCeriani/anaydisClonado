@@ -101,4 +101,46 @@ public class TestPractice03 extends SorterTest{
         testSorter(createStringDataSetGenerator(), SorterType.QUICK_MED_OF_THREE, 100);
     }
 
+
+    @Test public void testQuickThreePartitionWithIntegerGenerator() {
+        testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 10);
+        testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 50);
+        testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 100);
+    }
+
+    @Test public void testQuickThreePartitionWithStringGenerator() {
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 10);
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 50);
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 100);
+    }
+
+
+    /** Test QuickCutoff with String generator. */
+    @Test public void testMergeTopDownCutWithStringGenerator() {
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_TOP_DOWN, 10);
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_TOP_DOWN, 50);
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_TOP_DOWN, 100);
+    }
+
+
+    @Test public void testMergeTopDownWithIntegerGenerator() {
+        testSorter(createIntegerDataSetGenerator(), SorterType.MERGE_TOP_DOWN, 10);
+        testSorter(createIntegerDataSetGenerator(), SorterType.MERGE_TOP_DOWN, 50);
+        testSorter(createIntegerDataSetGenerator(), SorterType.MERGE_TOP_DOWN, 100);
+    }
+
+    /** Test QuickCutoff with String generator. */
+    @Test public void testMergeBottomupOfThreeCutWithStringGenerator() {
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 10);
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 50);
+        testSorter(createStringDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 100);
+    }
+
+
+    @Test public void testMergeBottomUpWithIntegerGenerator() {
+        testSorter(createIntegerDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 10);
+        testSorter(createIntegerDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 50);
+        testSorter(createIntegerDataSetGenerator(), SorterType.MERGE_BOTTOM_UP, 100);
+    }
+
 }

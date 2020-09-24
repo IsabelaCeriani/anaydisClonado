@@ -7,6 +7,7 @@ import anaydis.sort.dataSetGenerators.IntegerDataSetGenerator;
 import anaydis.sort.gui.ObservableSorter;
 import anaydis.sort.listeners.OrderSorterListener;
 import anaydis.sort.listeners.TimePerformanceListener;
+import anaydis.sort.sorters.QuickCutOff;
 import anaydis.sort.sorters.ShellSorter;
 
 
@@ -78,7 +79,7 @@ public class BenchResultsGenerator {
         observableSorter.removeSorterListener(orderSorterListener);
         observableSorter.removeSorterListener(timePerformanceListener);
 
-        return new HBenchResult(nSize, timesExecuted, dataArrangement, SorterType.SHELL, calculateAverage(orderPerformance), timePerformance, h);
+        return new HBenchResult(nSize, timesExecuted, dataArrangement, calculateAverage(orderPerformance), timePerformance, h);
     }
 
     public int calculateAverage(int [] results){
@@ -88,5 +89,26 @@ public class BenchResultsGenerator {
         }
         return average/results.length;
     }
+
+    public  BenchResult createBenchResultForMPerformance(int nSize, DataArrangement dataArrangement, int timesExecuted, int M){
+        TimePerformanceListener timePerformanceListener = new TimePerformanceListener();
+        final List<Integer> integers = integerDataSetGenerator.createRandom(nSize);
+        QuickCutOff sorter = (QuickCutOff) sorterProviderClass.getSorterForType(SorterType.QUICK_CUT);
+        sorter.setCutIndex(M);
+
+        int counter = 0;
+        while(counter <timesExecuted){
+            timePerformanceListener.start();
+            sorter.sort(integerComparator, integers);
+            timePerformanceListener.setTime();
+            timePerformanceListener.reset();
+            counter++;
+        }
+
+        double timePerformance = timePerformanceListener.getTime();
+
+        return new QuickCutOffBenchResult(nSize, timesExecuted, dataArrangement, 0, timePerformance, M);
+    }
+
 
 }

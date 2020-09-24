@@ -5,7 +5,7 @@ import anaydis.sort.SorterType;
 public class HBenchResult extends BenchResult {
 
     int[] hIncrement;
-    public HBenchResult(int nSize, int timesExecuted, DataArrangement dataArrangement, SorterType shell, int orderPerformance, double timePerformance, int[] h) {
+    public HBenchResult(int nSize, int timesExecuted, DataArrangement dataArrangement, int orderPerformance, double timePerformance, int[] h) {
         super(nSize, timesExecuted, dataArrangement, SorterType.SHELL, orderPerformance, timePerformance);
         this.hIncrement = h;
     }
