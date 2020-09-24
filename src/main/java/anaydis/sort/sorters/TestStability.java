@@ -1,7 +1,6 @@
-package anaydis.sort;
+package anaydis.sort.sorters;
 
 import org.jetbrains.annotations.NotNull;
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,6 @@ public class TestStability {
     }
 
 
-    @Test
     public  void testShellStability(List<String> strnigs){
 
         //al ordenar por el tama;o de los arrays, si el algoritmo es estable deberia quedar respetando lor ordenes"
@@ -84,7 +82,7 @@ public class TestStability {
 
     }
 
-    @Test
+
     public static void testQuickStability(List<String> strings, int left, int right){
             if(right <= left) return;
             int i = partition(strings, left, right);

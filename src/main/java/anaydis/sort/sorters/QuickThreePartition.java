@@ -6,39 +6,36 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Comparator;
 import java.util.List;
 
-public class QuickThreePartition extends AbstractSorter {
+public class QuickThreePartition extends QuickSorter {
     @Override
     public <T> void sort(@NotNull Comparator<T> comparator, @NotNull List<T> list) {
-            sort(comparator, list, 0, list.size()-1);
+            quickSort(comparator, list, 0, list.size()-1);
     }
 
 
 
-    public <T> void sort(@NotNull Comparator<T> comparator, @NotNull List<T> list, int left, int right){
-        if (right<=left) return;
+    public <T> int partition (@NotNull Comparator<T> comparator, @NotNull List<T> list, int low, int high) {
+        int pivot = high;
+        int i = (low - 1);
 
-        int lIndex = left;
-        int rIndex = right;
-        int i = left+1;
-
-
-        while (i <= rIndex) {
-            if (greater(comparator, list, left, i)) {
-
-                swap(list, i++, lIndex++);
-            }
-            else  if (greater(comparator, list, i, left)){
-                swap(list, rIndex--, i);
-            }else {
+        for (int j = low; j <= high - 1; j++){
+            if (greater(comparator, list, pivot, j)) {
                 i++;
-            }
+                swap(list, j, i); }
         }
 
+        swap(list, i+1, high);
+        return (i + 1);
+    }
 
-        sort(comparator, list, left, lIndex-1);
-        sort(comparator, list, rIndex+1, right);
 
 
+    <T> void quickSort(@NotNull Comparator<T> comparator, @NotNull List<T> list, int low, int high) {
+        if (low < high) {
+            int pi = partition(comparator, list, low, high);
+            quickSort(comparator, list, low, pi - 1);
+            quickSort(comparator, list, pi + 1, high);
+        }
     }
 
 
@@ -49,4 +46,6 @@ public class QuickThreePartition extends AbstractSorter {
     public SorterType getType() {
         return SorterType.QUICK_THREE_PARTITION;
     }
+
+
 }

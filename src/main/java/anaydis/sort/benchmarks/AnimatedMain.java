@@ -3,9 +3,9 @@ package anaydis.sort.benchmarks;
 import anaydis.animation.sort.gui.Main;
 import anaydis.sort.SorterProviderClass;
 
-public class AnimatedMain {
+public interface AnimatedMain {
 
-    public static void main(String[] args) {
+     static void main(String[] args) {
         Main.animate(new SorterProviderClass());
     }
 }

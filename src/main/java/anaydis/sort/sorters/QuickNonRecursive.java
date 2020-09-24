@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Stack;
 
-public class QuickNonRecursive extends AbstractSorter {
+public class QuickNonRecursive extends QuickSorter {
     @Override
     public <T> void sort(@NotNull Comparator<T> comparator, @NotNull List<T> list) {
         sort(comparator, list, 0, list.size()-1);

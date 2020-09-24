@@ -23,6 +23,32 @@ public class QuickSorter  extends AbstractSorter {
         sort(comparator, list, left, right);
     }
 
+    public<T> int partition(@NotNull Comparator<T> comparator, @NotNull List<T> list, int left, int right) {
+        int i = left-1;
+        int j = right;
+
+        while(true) {
+            while(greater(comparator, list, right,++i)){
+                if (i == right)
+                    break;
+            }
+            while(greater(comparator, list, --j,right )) {
+                if (j == left)
+                    break;
+            }
+            if (i >= j)
+                break;
+
+            swap(list, i, j);
+
+        }
+        swap(list, i, right);
+        return i;
+
+
+
+    }
+
 
 
 
