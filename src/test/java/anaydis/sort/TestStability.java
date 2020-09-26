@@ -1,6 +1,7 @@
-package anaydis.sort.sorters;
+package anaydis.sort;
 
 import org.jetbrains.annotations.NotNull;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,8 @@ import static java.util.Collections.swap;
 
 public class TestStability {
 
-    public static void main(String[] args) {
+
+    public List<String> generateList(){
         List<String> strnigs = new ArrayList<>();
         strnigs.add("1");
         strnigs.add("2");
@@ -19,19 +21,15 @@ public class TestStability {
         strnigs.add("6");
         strnigs.add("7");
 
-        testQuickStability(strnigs, 0, strnigs.size()-1);
-
-        StringBuilder string = new StringBuilder();
-        for (String name: strnigs) string.append(name).append(", ");
-        System.out.println(string);
-
-
+        return strnigs;
     }
 
 
-    public  void testShellStability(List<String> strnigs){
-
         //al ordenar por el tama;o de los arrays, si el algoritmo es estable deberia quedar respetando lor ordenes"
+
+    @Test //List = 1,2,3,4,5,6,7
+    public  void testShellStability(){
+            List<String> strnigs = generateList();
 
         StringBuilder string = new StringBuilder();
         for (String name: strnigs) string.append(name).append(", ");
@@ -83,13 +81,27 @@ public class TestStability {
     }
 
 
-    public static void testQuickStability(List<String> strings, int left, int right){
+    public  void quickSorter(List<String> strings, int left, int right){
             if(right <= left) return;
             int i = partition(strings, left, right);
-            testQuickStability(strings, left, i - 1);
-            testQuickStability(strings, i + 1, right);
+            quickSorter(strings, left, i - 1);
+            quickSorter(strings, i + 1, right);
 
         }
 
+
+    @Test//List = 1,2,3,4,5,6,7
+    public void testQuickStability(){
+        List<String> strnigs = generateList();
+        quickSorter(strnigs, 0, strnigs.size()-1);
+
+        StringBuilder string = new StringBuilder();
+        for (String name: strnigs) string.append(name).append(", ");
+        System.out.println(string);
+
+
     }
+
+
+}
 

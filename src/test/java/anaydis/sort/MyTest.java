@@ -1,10 +1,7 @@
 package anaydis.sort;
-import anaydis.sort.benchmarks.BenchResultsGenerator;
-import anaydis.sort.listeners.OrderSorterListener;
 import anaydis.sort.sorters.QuickCutOff;
 import anaydis.sort.sorters.QuickSorter;
 import anaydis.sort.sorters.*;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -32,89 +29,12 @@ public class MyTest extends SorterTest {
     DataSetGenerator<String> stringDataSetGenerator=  createStringDataSetGenerator();
     Comparator<String> stringComparator = stringDataSetGenerator.getComparator();
 
-    OrderSorterListener orderSorterListener = new OrderSorterListener();
 
 
 
 
 
 
-
-
-    /** Tests sorter greater with integers*/
-    @Test
-    public void testGreaterInteger(){
-        List<Integer> listToTest = new ArrayList<>();
-        listToTest.add(0);
-        listToTest.add(1);
-
-       Assert.assertTrue(bubbleSorter.greater(integerComparator, listToTest, 1, 0));
-
-    }
-
-    /** Tests sorter  swap with integers */
-    @Test
-    public void testSwapInteger(){
-        List<Integer> listToTest = new ArrayList<>();
-        listToTest.add(0);
-        listToTest.add(1);
-        bubbleSorter.swap(listToTest, 0, 1);
-
-        List<Integer> correctList = new ArrayList<>();
-        correctList.add(1);
-        correctList.add(0);
-
-        assertThat(listToTest).isEqualTo(correctList);
-
-    }
-
-
-    @Test
-    public void listenerGreater(){
-        orderSorterListener.greater(2,3);
-        assertThat(orderSorterListener.getGreaters()).isEqualTo(1);
-    }
-    @Test
-    public void listenerSwap(){
-        orderSorterListener.swap(2,3);
-        assertThat(orderSorterListener.getSwaps()).isEqualTo(1);
-    }
-
-    @Test
-    public void orderSorterListens(){
-        List<Integer> randomIntegerList = integerDataSetGenerator.createDescending(100);
-        insertionSorter.addSorterListener(orderSorterListener);
-        insertionSorter.greater(integerComparator, randomIntegerList, 3, 4);
-        insertionSorter.greater(integerComparator, randomIntegerList, 3, 4);
-        insertionSorter.greater(integerComparator, randomIntegerList, 3, 4);
-        insertionSorter.swap( randomIntegerList, 3, 4);
-
-        assertThat(orderSorterListener.getOrder()).isEqualTo(4);
-        insertionSorter.removeSorterListener(orderSorterListener);
-
-    }
-
-    @Test
-    public void testOrderSorterListensSort(){
-        OrderSorterListener orderSorterListener = new OrderSorterListener();
-        List<Integer> descending = integerDataSetGenerator.createDescending(100);
-        insertionSorter.addSorterListener(orderSorterListener);
-        insertionSorter.sort(integerComparator, descending);
-
-        assertThat(orderSorterListener.getOrder()).isGreaterThan(100);
-
-        insertionSorter.removeSorterListener(orderSorterListener);
-
-    }
-    @Test
-    public void testCalculateAverge(){
-        int[] integers = {10, 4};
-        BenchResultsGenerator benchResultsGenerator = new BenchResultsGenerator();
-
-
-        assertThat(benchResultsGenerator.calculateAverage(integers)).isEqualTo(7);
-
-    }
 
 
     @Test
@@ -134,21 +54,6 @@ public class MyTest extends SorterTest {
         assertThat(randomStringList).isSorted();
 
     }
-    /** Test H with different gap Integer generator. */
-    @Test
-    public void testHWithIntegerGenerator() {
-        List<String> randomStringList = stringDataSetGenerator.createRandom(36);
-        hSorter.sort(stringComparator, randomStringList, 1);
-        assertThat(randomStringList).isSorted();
-    }
-    /** Test H with different gap Integer generator. */
-    @Test
-    public void testHGappedWithIntegerGenerator() {
-        int[] incs = { 1391376, 463792, 198768, 86961, 33936, 13776, 4592, 1968, 861, 336, 112, 48, 21, 7, 3, 1};
-        List<Integer> randomInteger = integerDataSetGenerator.createRandom(10);
-        shellSorter.sort(integerComparator, randomInteger, incs);
-        assertThat(randomInteger).isSorted();
-    }
 
     @Test
     public void testShellSorterBestCaseWithString(){
@@ -167,6 +72,24 @@ public class MyTest extends SorterTest {
         assertThat(randomStringList).isSorted();
 
     }
+
+
+
+    @Test
+    public void testHWithIntegerGenerator() {
+        List<String> randomStringList = stringDataSetGenerator.createRandom(36);
+        hSorter.sort(stringComparator, randomStringList, 1);
+        assertThat(randomStringList).isSorted();
+    }
+    /** Test H with different gap Integer generator. */
+    @Test
+    public void testHGappedWithIntegerGenerator() {
+        int[] incs = { 1391376, 463792, 198768, 86961, 33936, 13776, 4592, 1968, 861, 336, 112, 48, 21, 7, 3, 1};
+        List<Integer> randomInteger = integerDataSetGenerator.createRandom(10);
+        shellSorter.sort(integerComparator, randomInteger, incs);
+        assertThat(randomInteger).isSorted();
+    }
+
 
     @Test
     public void testQuickSorterAverageCaseWithString(){
@@ -203,16 +126,7 @@ public class MyTest extends SorterTest {
         assertThat(ascendingIntegerList).isSorted();
     }
 
-    /** Tests greater with String*/
-    @Test
-    public void testGreaterString(){
-        List<String> listToTest = new ArrayList<>();
-        listToTest.add("a");
-        listToTest.add("b");
 
-        Assert.assertTrue(bubbleSorter.greater(stringComparator, listToTest, 1, 0));
-
-    }
 
     /** Tests greater with Integer*/
     @Test

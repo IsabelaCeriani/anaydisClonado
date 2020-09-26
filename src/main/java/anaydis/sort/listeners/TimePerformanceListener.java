@@ -62,4 +62,8 @@ public class TimePerformanceListener implements SorterListener {
     public void reset(){
         startTime = 0;
     }
+
+    public double getStartTime() {
+        return startTime;
+    }
 }
