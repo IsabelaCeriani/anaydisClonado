@@ -1,4 +1,5 @@
-package anaydis.sort;
+package anaydis.sort.sortersTesters;
+import anaydis.sort.DataSetGenerator;
 import anaydis.sort.sorters.QuickCutOff;
 import anaydis.sort.sorters.QuickSorter;
 import anaydis.sort.sorters.*;

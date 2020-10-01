@@ -1,5 +1,6 @@
-package anaydis.sort;
+package anaydis.sort.benchmarkTesters;
 
+import anaydis.sort.SorterType;
 import anaydis.sort.benchmarks.BenchResult;
 import anaydis.sort.benchmarks.DataArrangement;
 import org.junit.Test;

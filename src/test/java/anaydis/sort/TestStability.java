@@ -27,7 +27,7 @@ public class TestStability {
 
         //al ordenar por el tama;o de los arrays, si el algoritmo es estable deberia quedar respetando lor ordenes"
 
-    @Test //List = 1,2,3,4,5,6,7
+    @Test //List = "1","2","3","4","5","6","7"q
     public  void testShellStability(){
             List<String> strnigs = generateList();
 

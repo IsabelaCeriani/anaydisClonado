@@ -1,4 +1,4 @@
-package anaydis.sort;
+package anaydis.sort.listenersTesters;
 
 import anaydis.sort.listeners.TimePerformanceListener;
 import org.assertj.core.data.Percentage;

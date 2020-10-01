@@ -1,5 +1,6 @@
-package anaydis.sort;
+package anaydis.sort.datasetGeneratorTesters;
 
+import anaydis.sort.DataSetGenerator;
 import anaydis.sort.dataSetGenerators.IntegerDataSetGenerator;
 import anaydis.sort.dataSetGenerators.StringDataSetGenerator;
 import org.junit.Test;

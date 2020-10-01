@@ -1,9 +1,11 @@
-package anaydis.sort;
+package anaydis.sort.sortersTesters;
 
 
+import anaydis.sort.SorterType;
+import anaydis.sort.sortersTesters.SorterTest;
 import org.junit.Test;
 
-public class TestPractice03 extends SorterTest{
+public class TestPractice03 extends SorterTest {
 
     /** Test H with Integer generator. */
     @Test

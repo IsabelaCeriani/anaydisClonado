@@ -1,5 +1,7 @@
-package anaydis.sort;
+package anaydis.sort.sortersTesters;
 
+import anaydis.sort.SorterType;
+import anaydis.sort.sortersTesters.SorterTest;
 import org.junit.Test;
 
 public class TestPractice02 extends SorterTest {
