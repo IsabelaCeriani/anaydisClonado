@@ -1,6 +1,9 @@
-package anaydis.sort;
+package anaydis.sort.sorters;
 
 
+import anaydis.sort.Sorter;
+import anaydis.sort.SorterProvider;
+import anaydis.sort.SorterType;
 import anaydis.sort.sorters.QuickCutOff;
 import anaydis.sort.sorters.QuickNonRecursive;
 import anaydis.sort.sorters.QuickSorter;
@@ -12,7 +15,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 
-public class SorterProviderClass implements SorterProvider{
+public class SorterProviderClass implements SorterProvider {
 
 //    private final Map<SorterType, Sorter> sorters = new EnumMap<>(SorterType.class);
 

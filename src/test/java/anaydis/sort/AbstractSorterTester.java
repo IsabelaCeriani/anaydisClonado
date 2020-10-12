@@ -4,6 +4,7 @@ import anaydis.sort.benchmarks.BenchResultsGenerator;
 import anaydis.sort.dataSetGenerators.IntegerDataSetGenerator;
 import anaydis.sort.listeners.OrderSorterListener;
 import anaydis.sort.sorters.BubbleSorter;
+import anaydis.sort.sorters.SorterProviderClass;
 import org.junit.Assert;
 import org.junit.Test;
 

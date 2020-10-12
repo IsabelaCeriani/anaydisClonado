@@ -1,6 +1,6 @@
 package anaydis.sort.benchmarkTesters;
 
-import anaydis.sort.SorterProviderClass;
+import anaydis.sort.sorters.SorterProviderClass;
 import anaydis.sort.SorterType;
 import anaydis.sort.benchmarks.BenchResult;
 import anaydis.sort.benchmarks.BenchResultsGenerator;

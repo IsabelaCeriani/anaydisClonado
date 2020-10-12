@@ -5,6 +5,7 @@ import anaydis.sort.benchmarks.BenchResultsGenerator;
 import anaydis.sort.benchmarks.DataArrangement;
 import anaydis.sort.gui.ObservableSorter;
 import anaydis.sort.listeners.OrderSorterListener;
+import anaydis.sort.sorters.SorterProviderClass;
 
 public class PerformanceTesting {
 

@@ -1,7 +1,9 @@
-package anaydis.sort;
+package anaydis.sort.fullNameClasses;
 
+import anaydis.sort.fullNameClasses.FullName;
 import anaydis.sort.sorters.InsertionSorter;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.Comparator;
 import java.util.List;
 

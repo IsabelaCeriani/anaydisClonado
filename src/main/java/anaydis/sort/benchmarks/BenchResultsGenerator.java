@@ -1,7 +1,7 @@
 package anaydis.sort.benchmarks;
 
 
-import anaydis.sort.SorterProviderClass;
+import anaydis.sort.sorters.SorterProviderClass;
 import anaydis.sort.SorterType;
 import anaydis.sort.dataSetGenerators.IntegerDataSetGenerator;
 import anaydis.sort.gui.ObservableSorter;

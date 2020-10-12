@@ -18,7 +18,7 @@ public class QuickThreePartition extends QuickSorter {
         int pivot = high;
         int i = (low - 1);
 
-        for (int j = low; j <= high - 1; j++){
+        for (int j = low; j < high ; j++){
             if (greater(comparator, list, pivot, j)) {
                 i++;
                 swap(list, j, i); }

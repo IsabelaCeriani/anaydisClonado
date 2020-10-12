@@ -1,6 +1,8 @@
 package anaydis.sort;
 
 
+import anaydis.sort.fullNameClasses.FullName;
+import anaydis.sort.fullNameClasses.FullNameSorter;
 import org.junit.Test;
 
 import java.util.ArrayList;

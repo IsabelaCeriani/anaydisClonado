@@ -1,26 +1,25 @@
 package anaydis.sort;
 
 import anaydis.search.Map;
+import anaydis.sort.binarySearchTree.RandomizedBST;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 
 //The key values must be able to be sorted.
-public  class MyMap<T extends Comparable<T>, V> implements Map, Comparator<T> {
+public  class MyMap<T extends Comparable<T>, V> implements Map{
 
-    private final List<T> keys;
-    private final List<V> values;
+    private final RandomizedBST treeMap;
 
     public MyMap() {
-        keys = new ArrayList<>();
-        values = new ArrayList<>();
+        treeMap = new RandomizedBST();
     }
 
 
     @Override
     public int size() {
-        return keys.size();
+        return treeMap.getSize();
     }
 
 
@@ -28,90 +27,39 @@ public  class MyMap<T extends Comparable<T>, V> implements Map, Comparator<T> {
 
     @Override
     public boolean containsKey(@NotNull Object key) {
-        return findKey(key, 0, keys.size() - 1) != -1;
+        return treeMap.contains((T)key);
     }
 
-
-    public int findKey(@NotNull Object key, int left, int right){
-
-        while(left<=right){
-        int middle = (left + right)/2;
-        int compareValue = compare((T) key, keys.get(middle));
-
-        if(compareValue == 0) return middle;
-        if(compareValue < 0) right = middle-1;
-        if (compareValue > 0) left = middle+1;
-
-
-        }
-
-        return -1;
-
-    }
 
 
     @Override
     public Object get(@NotNull Object key) {
-        int index = findKey(key, 0, keys.size()-1);
-        if(index != -1){
-            return values.get(index);
-        }
+        if(treeMap.contains((T)key)) return treeMap.get((T)key);
 
-        return new Exception("Key not found in Map");
+        return null;
     }
 
     @Override
     public Object put(@NotNull Object key, Object value) {
-        if(keys.isEmpty()) {
-            keys.add((T) key);
-            values.add((V) value);
-            return null;
-        }
-        int index = findKey(key, 0, keys.size()-1);
-        if(index < 0){
-            index = (-index) -1;
-            int size = keys.size()+1;
-            for (int i = index; i <= size; i++) {
-                keys.set(i++, keys.get(i));
-                values.set(i++, values.get(i));
-                return null;
-            }
-            keys.set(index, (T)key);
-        }
-        return values.set(index, (V)value);
-
-
+        return treeMap.put((T)key, value);
     }
+
 
 
 
 
     @Override
     public void clear() {
-        keys.forEach(Objects::isNull);
+            treeMap.clear();
     }
 
     @Override
     public Iterator<T> keys() {
-        return (Iterator<T>) keys;
+        return (Iterator<T>) treeMap.getKeyList();
     }
 
 
-
-
-    @Override
-    public int compare(T o1, T o2) {
-        return o1.compareTo(o2);
-    }
-
-
-
-    //methods for tester
-    protected List<T> getKeys(){
-        return keys;
-    }
-
-    protected List<V> getValues(){
-        return values;
+    public RandomizedBST getTreeMap() {
+        return treeMap;
     }
 }
