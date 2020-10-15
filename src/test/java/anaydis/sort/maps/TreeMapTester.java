@@ -1,7 +1,6 @@
-package anaydis.sort.binarySearchTree;
+package anaydis.sort.maps;
 
 import junit.framework.TestCase;
-import org.assertj.core.data.Percentage;
 import org.junit.Assert;
 
 import java.util.ArrayList;
@@ -10,9 +9,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class RandomizedBSTTest extends TestCase {
+public class TreeMapTester extends TestCase {
 
-    RandomizedBST tree = new RandomizedBST();
+    anaydis.sort.maps.TreeMap<Integer, String> tree = new TreeMap<>();
 
 
     public void testGet() {
@@ -23,8 +22,8 @@ public class RandomizedBSTTest extends TestCase {
 
     public void testContains() {
         tree.put(2, "B");
-        Assert.assertFalse(tree.contains(4));
-        Assert.assertTrue(tree.contains(2));
+        Assert.assertFalse(tree.containsKey(4));
+        Assert.assertTrue(tree.containsKey(2));
     }
 
     public void testFind() {

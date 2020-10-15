@@ -1,16 +1,12 @@
-package anaydis.sort;
+package anaydis.sort.maps;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.TestOnly;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Iterator;
-
-public class MyMapTester extends MyMap{
-    MyMap<Integer, String> map = new MyMap<>();
-    MyMap<Integer, String> emptyMap = new MyMap<>();
+public class MyMapTester extends TreeMapTester {
+    TreeMap<Integer, String> map = new TreeMap<>();
+    TreeMap<Integer, String> emptyMap = new TreeMap<>();
 
 
     @Test
@@ -58,10 +54,10 @@ public class MyMapTester extends MyMap{
     @Test
     public void testClear() {
         map.put(2, "B");
-        Assert.assertTrue(map.getTreeMap().getKeyList().contains(2));
+        Assert.assertTrue(map.getKeyList().contains(2));
 
         map.clear();
-        Assert.assertTrue(map.getTreeMap().getRoot().key == null);
+        Assert.assertTrue(map.getRoot().key == null);
     }
 
 }

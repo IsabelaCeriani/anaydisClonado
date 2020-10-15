@@ -1,62 +1,53 @@
-package anaydis.sort.binarySearchTree;
-
-
+package anaydis.sort.maps;
+import anaydis.search.Map;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
-public class RandomizedBST <T extends Comparable<T> , V> implements Comparator<T> {
 
+public class TreeMap<T extends Comparable<T>, V> implements Map, Comparator<T> {
 
     private DoubleNode<T, V> root;
     private int size;
 
-    public RandomizedBST(){ root = null; }
+    public TreeMap(){ root = null; }
 
+    @Override
+    public int size() {
+        return this.size;
+    }
 
-    public V get(T key)  {
-        DoubleNode<T,V> node = find(root, key);
+    @Override
+    public boolean containsKey(@NotNull Object key) {
+        return  (find(root, (T) key) != null);
+    }
+
+    @Override
+    public Object get(@NotNull Object key) {
+        DoubleNode<T,V> node = find(root, (T) key);
         return node.elem;
     }
 
-    public boolean contains(T key){
-        return (find(root, key) != null);
-    }
-
-    public DoubleNode<T, V> find(DoubleNode<T, V> node, T key) {
-        if (node == null || node.key == null ) return null;
-        int compareValue = compare(key, node.key);
-
-        switch (compareValue) {
-            case 0:
-                return node;
-            case -1:
-                find(node.left, key);
-            case 1:
-                find(node.right, key);
-        }
-
-        return find(node.right, key);
-
-    }
-
-
-    public  DoubleNode<T,V> put(@NotNull T key, V value) {
-        root = rootPut(root, key, value);
+    @Override
+    public Object put(@NotNull Object key, Object value) {
+        root = rootPut(root, (T)key, (V)value);
         return root;
     }
+
+
 
     public DoubleNode<T, V> rootPut(DoubleNode<T, V> node, @NotNull T key, V value) {
         DoubleNode<T, V> newNode = new DoubleNode<T, V>();
         newNode.elem = value;
         newNode.key = key;
-            if (node == null  || node.key == null){
-                node = newNode;
-                size++;
-                return newNode;
-            }
+        if (node == null  || node.key == null){
+            node = newNode;
+            size++;
+            return newNode;
+        }
 
 //            if (Math.random()< 0.5) return rootPut(node, key, value);
 
@@ -83,14 +74,64 @@ public class RandomizedBST <T extends Comparable<T> , V> implements Comparator<T
                 }
                 node = node.right;
             }
-            }
-
-            return node;
         }
 
+        return node;
+    }
 
 
 
+    @Override
+    public void clear() {
+        clear(root);
+    }
+    public void clear(DoubleNode<T,V> node){
+        if(node != null){
+            getKeyList(node.left);
+            node.key = null;
+            getKeyList(node.right);
+        }
+    }
+
+    @Override
+    public Iterator keys() {
+        return null;
+    }
+
+
+    public DoubleNode<T, V> find(DoubleNode<T, V> node, T key) {
+        if (node == null || node.key == null ) return null;
+        int compareValue = compare(key, node.key);
+
+        switch (compareValue) {
+            case 0:
+                return node;
+            case -1:
+                find(node.left, key);
+            case 1:
+                find(node.right, key);
+        }
+
+        return find(node.right, key);
+
+    }
+//    public DoubleNode<T, V> find(DoubleNode<T, V> node, T key)
+
+    public List<T> getKeyList(DoubleNode<T,V> node){
+        List<T> keys = new ArrayList<>();
+        if(node != null){
+            getKeyList(node.left);
+            keys.add(node.key);
+            getKeyList(node.right);
+        }
+        return keys;
+    }
+
+    @Override
+    public int compare(T o1, T o2) {
+        return o1.compareTo(o2);
+
+    }
     public DoubleNode<T, V> rotateLeft(DoubleNode<T, V> node)  {
         DoubleNode<T, V> result = node.right;
         node.right = result.left;
@@ -102,23 +143,6 @@ public class RandomizedBST <T extends Comparable<T> , V> implements Comparator<T
         node.left = result.right;
         result.right = node;
         return result;
-    }
-
-
-    @Override
-    public int compare(T o1, T o2) {
-            return o1.compareTo(o2);
-
-    }
-
-    public List<T> getKeyList(DoubleNode<T,V> node){
-        List<T> keys = new ArrayList<>();
-        if(node != null){
-            getKeyList(node.left);
-            keys.add(node.key);
-            getKeyList(node.right);
-        }
-        return keys;
     }
 
     public List<T> getKeyList(){
@@ -138,17 +162,7 @@ public class RandomizedBST <T extends Comparable<T> , V> implements Comparator<T
         return getValuesList(root);
     }
 
-    public void clear(DoubleNode<T,V> node){
-        if(node != null){
-            getKeyList(node.left);
-            node.key = null;
-            getKeyList(node.right);
-        }
-    }
 
-    public void clear(){
-         clear(root);
-    }
     public int getHeight(DoubleNode<T, V> node) {
 
         if (node == null) return -1;
@@ -163,9 +177,7 @@ public class RandomizedBST <T extends Comparable<T> , V> implements Comparator<T
         return root;
     }
 
-    public int getSize() {
-        return size;
-    }
+
 
     int amountOfLeavesInTree(DoubleNode<T, V> node){
 

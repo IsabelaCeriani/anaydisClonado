@@ -1,4 +1,4 @@
-package anaydis.sort.binarySearchTree;
+package anaydis.sort.maps;
 
 
 public class DoubleNode<T, V>{
