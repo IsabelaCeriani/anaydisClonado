@@ -1,13 +1,11 @@
 package anaydis.sort.maps;
 
-import junit.framework.TestCase;
-import org.jetbrains.annotations.TestOnly;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class BinarySearchMapTest<Integer, String>extends BinarySearchMap {
+public class ArrayMapTest<Integer, String>extends ArrayMap {
 
-    BinarySearchMap<java.lang.Integer,String>  map = new BinarySearchMap<java.lang.Integer, String>();
+    ArrayMap<java.lang.Integer,String> map = new ArrayMap<java.lang.Integer, String>();
 
 
     @Test
@@ -102,6 +100,7 @@ public class BinarySearchMapTest<Integer, String>extends BinarySearchMap {
         Assert.assertTrue(map.size() == 0);
     }
 
+    //falta
     @Test
     public void testKeys() {
     }

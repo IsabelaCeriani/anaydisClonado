@@ -1,6 +1,7 @@
 package anaydis.sort.maps;
 
 import junit.framework.TestCase;
+import org.assertj.core.data.Percentage;
 import org.junit.Assert;
 
 import java.util.ArrayList;
@@ -45,29 +46,29 @@ public class TreeMapTester extends TestCase {
 //        tree.put(2, "A");
 //        Assert.assertTrue(tree.getValuesList().contains("A"));
 //    }
-//
-//    public void testRootPut() {
-//        tree.put(2, "B");
-//        Assert.assertTrue(tree.getKeyList().contains(2));
-//        Assert.assertTrue(tree.getValuesList().contains("B"));
-//
-//        //testeo que sobreescriba al agregar un valor con una clave ya ingresada
-//        tree.put(2, "A");
-//        Assert.assertTrue(tree.getValuesList().contains("A"));
-//
-//        //testeo que no este muy desbalanceado
-//        tree.put(3, "A");
-//        tree.put(4, "A");
-//        tree.put(5, "A");
-//        tree.put(6, "A");
-//        tree.put(7, "A");
-//
-//        int left = tree.amountOfLeavesInTree(tree.getRoot().left);
-//        int right = tree.amountOfLeavesInTree(tree.getRoot().right);
-//
-//        assertThat(left).isCloseTo(right, Percentage.withPercentage(50));
-//
-//    }
+
+    public void testRootPut() {
+        tree.put(2, "B");
+        Assert.assertTrue(tree.getKeyList().contains(2));
+        Assert.assertTrue(tree.getValuesList().contains("B"));
+
+        //testeo que sobreescriba al agregar un valor con una clave ya ingresada
+        tree.put(2, "A");
+        Assert.assertTrue(tree.getValuesList().contains("A"));
+
+        //testeo que no este muy desbalanceado
+        tree.put(3, "A");
+        tree.put(4, "A");
+        tree.put(5, "A");
+        tree.put(6, "A");
+        tree.put(7, "A");
+
+        int left = tree.amountOfLeavesInTree(tree.getRoot().left);
+        int right = tree.amountOfLeavesInTree(tree.getRoot().right);
+
+        assertThat(left).isCloseTo(right, Percentage.withPercentage(50));
+
+    }
 
     public void testRotateLeft() {
     }

@@ -7,12 +7,12 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class BinarySearchMap<T extends Comparable<T>, V> implements Map, Comparator<T> {
+public class ArrayMap<T extends Comparable<T>, V> implements Map, Comparator<T> {
 
     private List<T> keys = new ArrayList<>();
     private List<V> values = new ArrayList<>();
 
-    public BinarySearchMap() {
+    public ArrayMap() {
     }
 
     @Override
