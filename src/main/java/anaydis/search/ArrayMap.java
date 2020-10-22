@@ -4,12 +4,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class ArrayMap<K extends Comparable<K>, V> implements Map<K, V>, Comparator<K> {
+public class ArrayMap<K, V> implements Map<K, V> {
 
     private final List<K> keys = new ArrayList<>();
     private final List<V> values = new ArrayList<>();
+    private Comparator<K> comparator;
 
-
+    public ArrayMap(Comparator<K> comparator) {
+        this.comparator = comparator;
+    }
 
     @Override
     public int size() {
@@ -80,7 +83,7 @@ public class ArrayMap<K extends Comparable<K>, V> implements Map<K, V>, Comparat
         while (low <= high) {
             int middle = low + (high - low) / 2;
 
-            int compare = compare(searchedKey, keys.get(middle));
+            int compare = comparator.compare(searchedKey, keys.get(middle));
 
             if (compare == 0) return middle;
             if (compare < 0) high = middle - 1;
@@ -90,13 +93,10 @@ public class ArrayMap<K extends Comparable<K>, V> implements Map<K, V>, Comparat
         return -(low);
     }
 
-    @Override
-    public int compare(K o1, K o2) {
-        return o1.compareTo(o2);
-    }
 
 
-    //para testear sin acarrear posibles errores del put
+
+    //para testear evitando posibles errores del put
     protected void addKey(K key) {
         keys.add(key);
     }

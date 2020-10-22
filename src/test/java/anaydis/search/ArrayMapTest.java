@@ -1,11 +1,17 @@
 package anaydis.search;
 
+import anaydis.sort.dataSetGenerators.IntegerDataSetGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ArrayMapTest<Integer, String>extends ArrayMap {
+import java.util.Comparator;
 
-    ArrayMap<java.lang.Integer,String> map = new ArrayMap<>();
+public class ArrayMapTest<Integer, String>  {
+
+
+    IntegerDataSetGenerator integerDataSetGenerator = new IntegerDataSetGenerator();
+    Comparator<Integer> comparator = (Comparator<Integer>) integerDataSetGenerator.getComparator();
+    ArrayMap<java.lang.Integer,String> map = new ArrayMap<java.lang.Integer, String>((Comparator<java.lang.Integer>) comparator);
 
 
     @Test
@@ -165,10 +171,5 @@ public class ArrayMapTest<Integer, String>extends ArrayMap {
     }
 
 
-    @Test
-    public void testCompare() {
-        Assert.assertEquals(0, compare(1,1));
-        Assert.assertEquals(-1, compare(1,2));
-        Assert.assertEquals(1, compare(2,1));
-    }
+
 }

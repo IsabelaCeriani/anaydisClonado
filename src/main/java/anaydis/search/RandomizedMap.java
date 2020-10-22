@@ -32,6 +32,7 @@ public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Com
         return node.elem;
     }
 
+    //deberian retornar el elemento que habia en el nodo anterior, no en el nuevo
     @Override
     public V put(@NotNull T key, V value) {
          root = put(root, key, value);

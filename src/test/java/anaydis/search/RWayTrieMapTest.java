@@ -1,5 +1,6 @@
 package anaydis.search;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class RWayTrieMapTest extends RWayTrieMap<Integer> {
@@ -8,13 +9,17 @@ public class RWayTrieMapTest extends RWayTrieMap<Integer> {
 
     @Test
     public void testSize() {
+        tree.put("a", "a");
 
+        Assert.assertEquals(1, tree.size());
 
     }
 
     @Test
     public void testContainsKey() {
+        tree.put("a", "a");
 
+        Assert.assertTrue(tree.containsKey("a"));
     }
 
     @Test

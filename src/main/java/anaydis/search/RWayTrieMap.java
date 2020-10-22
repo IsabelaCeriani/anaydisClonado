@@ -23,7 +23,7 @@ public class RWayTrieMap<T> implements Map<String, T> {
 
     @Override
     public boolean containsKey(@NotNull String key) {
-        return find(root, key, 0) != null;
+        return (find(root, key, 0)!=null);
     }
 
     @Override
@@ -48,39 +48,38 @@ public class RWayTrieMap<T> implements Map<String, T> {
     public Iterator<String> keys() {
         return null;
     }
-    protected Node<T> find(Node<T> node, String key, int level){
-        if(node == null) return null;
-        if(level == key.length()) return node;
-        char c = key.charAt(level);
-        return find(node.next[c], key, level + 1);
 
+
+     protected Node<T> find(Node<T> node, String word, int d) {
+        if (node == null) {
+            return null;
+        }
+        if (d == word.length()) {
+            return node;
+        }
+        char c = word.charAt(d);
+        return find(node.next[c], word, d + 1);
     }
 
     @Override
     public T put(@NotNull String key, T value) {
-        T previousElem= root.elem;
         root = put(root, key, value, 0);
-        return previousElem;
+        return root.elem;
     }
 
     protected Node<T> put(Node<T> node, String key, T value, int level) {
         if(node == null) {
             Node<T> result = new Node<>(value);
-            size++;
             return result;
         }
 
-
-
             if(level == key.length()) {
                 node.elem = value;
-                size++;
                 return node;
             }
 
             char c = key.charAt(level);
             node.next[c] = put(node.next[c], key, value, level + 1);
-            size++;
             return node;
             }
 

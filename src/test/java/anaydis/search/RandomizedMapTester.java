@@ -34,6 +34,7 @@ public class RandomizedMapTester extends TestCase {
         Assert.assertEquals(node, tree.find(node, 1));
     }
 
+    //deberia testear lo que retorna el put
     public void testPut() {
         tree.put(2, "B");
         Assert.assertTrue(tree.containsKey(2));
