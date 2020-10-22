@@ -67,31 +67,8 @@ public class ArrayMap<T extends Comparable<T>, V> implements Map<T, V>, Comparat
 
     @Override
     public Iterator<T> keys() {
-        return new Iterator<>() {
-            final Stack<T> stack;
+        return null;
 
-            {
-                stack = new Stack<>();
-                int i = 0;
-                while (keys.get(i) != null) {
-                    stack.push(keys.get(i));
-                 i++;
-                }
-
-            }
-
-
-
-            @Override
-            public boolean hasNext() {
-                return !stack.isEmpty();
-            }
-
-            @Override
-            public T next() {
-                return stack.pop();
-            }
-        };
     }
 
     public int indexOf(T key) {
