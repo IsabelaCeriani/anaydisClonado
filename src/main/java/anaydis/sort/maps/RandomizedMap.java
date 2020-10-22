@@ -84,7 +84,7 @@ public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Com
 
     @Override
     public Iterator<T> keys() {
-        return (Iterator) keys();
+        return null;
     }
 
 
