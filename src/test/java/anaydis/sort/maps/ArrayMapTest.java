@@ -39,9 +39,9 @@ public class ArrayMapTest<Integer, String>extends ArrayMap {
 
     @Test
     public void testGet() {
-        map.put(1, "A");
-        map.put(2, "B");
-        map.put(3, "C");
+        map.put(1, (String) "A");
+        map.put(2, (String) "B");
+        map.put(3, (String) "C");
 
         String a = (String) map.get(1);
         String b = (String) map.get(2);
@@ -55,9 +55,9 @@ public class ArrayMapTest<Integer, String>extends ArrayMap {
 
     @Test
     public void testPut() {
-        map.put(1, "A");
-        map.put(2, "B");
-        map.put(3, "C");
+        map.put(1, (String) "A");
+        map.put(2, (String) "B");
+        map.put(3, (String) "C");
 
         Assert.assertTrue(map.containsKeyt(1));
         Assert.assertTrue(map.containsKeyt(2));
@@ -69,7 +69,7 @@ public class ArrayMapTest<Integer, String>extends ArrayMap {
         Assert.assertTrue(map.containsValueT((String) "C"));
 
         //pruebo que sobreescriva una key que ya esta en la lista con un nuevo valor
-        map.put(2, "Nuevo");
+        map.put(2, (String) "Nuevo");
         Assert.assertTrue(map.containsValueT((String) "Nuevo"));
         Assert.assertTrue(!map.containsValueT((String) "B"));
 

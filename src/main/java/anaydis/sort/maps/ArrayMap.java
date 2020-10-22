@@ -2,45 +2,40 @@ package anaydis.sort.maps;
 import anaydis.search.Map;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
-public class ArrayMap<T extends Comparable<T>, V> implements Map, Comparator<T> {
+public class ArrayMap<T extends Comparable<T>, V> implements Map<T, V>, Comparator<T> {
 
-    private List<T> keys = new ArrayList<>();
-    private List<V> values = new ArrayList<>();
+    private final List<T> keys = new ArrayList<>();
+    private final List<V> values = new ArrayList<>();
 
     public ArrayMap() {
     }
 
     @Override
     public int size() {
-        if(keys.size() > Integer.MAX_VALUE) return Integer.MAX_VALUE;
         return keys.size();
     }
 
     @Override
-    public boolean containsKey(@NotNull Object key) {
-        return (indexOf((T) key) >= 0);
+    public boolean containsKey(@NotNull T key) {
+        return (indexOf(key) >= 0);
     }
 
     @Override
-    public Object get(@NotNull Object key) {
-        int index = indexOf((T) key);
+    public V get(@NotNull T key) {
+        int index = indexOf(key);
         return values.get(index);
     }
 
-    //
     @Override
-    public Object put(@NotNull Object key, Object value) {
+    public V put(@NotNull T key, V value) {
         if (keys.isEmpty()) {
-            keys.add((T) key);
-            values.add((V) value);
+            keys.add(key);
+            values.add(value);
         }
 
-        int index = find((T) key, 0, size() - 1);
+        int index = find(key, 0, size() - 1);
         T lastKey = null;
         V lastValue = null;
 
@@ -53,14 +48,15 @@ public class ArrayMap<T extends Comparable<T>, V> implements Map, Comparator<T> 
             keys.add(lastKey);
             values.add(lastValue);
 
-            keys.set(index, (T) key);
-            values.set(index, (V) value);
+            keys.set(index, key);
+            values.set(index, value);
             return null;
         }
-        return values.set(index, (V) value);
+        return values.set(index, value);
 
 
     }
+
 
 
     @Override
@@ -70,8 +66,32 @@ public class ArrayMap<T extends Comparable<T>, V> implements Map, Comparator<T> 
     }
 
     @Override
-    public Iterator keys() {
-        return (Iterator) keys;
+    public Iterator<T> keys() {
+        return new Iterator<>() {
+            final Stack<T> stack;
+
+            {
+                stack = new Stack<>();
+                int i = 0;
+                while (keys.get(i) != null) {
+                    stack.push(keys.get(i));
+                 i++;
+                }
+
+            }
+
+
+
+            @Override
+            public boolean hasNext() {
+                return !stack.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                return stack.pop();
+            }
+        };
     }
 
     public int indexOf(T key) {

@@ -1,5 +1,7 @@
-package anaydis.sort;
+package anaydis.sort.sortersTesters;
 
+import anaydis.sort.SorterType;
+import anaydis.sort.StringDataSetGenerator;
 import anaydis.sort.benchmarks.BenchResultsGenerator;
 import anaydis.sort.dataSetGenerators.IntegerDataSetGenerator;
 import anaydis.sort.listeners.OrderSorterListener;

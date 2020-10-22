@@ -1,14 +1,14 @@
 package anaydis.sort.quijote;
 
 
-import anaydis.sort.maps.TreeMap;
+import anaydis.sort.maps.RandomizedMap;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class OccurrencesCounter {
 
-    TreeMap<String, Integer> occurrences = new TreeMap<>();
+    RandomizedMap<String, Integer> occurrences = new RandomizedMap<>();
     File quijote = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/src/main/java/anaydis/sort/quijote/quijote.txt");
     Scanner scanner = new Scanner(quijote);
     FileReader fileReader;
@@ -56,7 +56,7 @@ public class OccurrencesCounter {
 //
 //    }
 
-    public TreeMap<String, Integer> getOccurrences() {
+    public RandomizedMap<String, Integer> getOccurrences() {
         return occurrences;
     }
 }
