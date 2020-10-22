@@ -4,13 +4,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class ArrayMap<T extends Comparable<T>, V> implements Map<T, V>, Comparator<T> {
+public class ArrayMap<K extends Comparable<K>, V> implements Map<K, V>, Comparator<K> {
 
-    private final List<T> keys = new ArrayList<>();
+    private final List<K> keys = new ArrayList<>();
     private final List<V> values = new ArrayList<>();
 
-    public ArrayMap() {
-    }
+  
 
     @Override
     public int size() {
@@ -18,25 +17,25 @@ public class ArrayMap<T extends Comparable<T>, V> implements Map<T, V>, Comparat
     }
 
     @Override
-    public boolean containsKey(@NotNull T key) {
+    public boolean containsKey(@NotNull K key) {
         return (indexOf(key) >= 0);
     }
 
     @Override
-    public V get(@NotNull T key) {
+    public V get(@NotNull K key) {
         int index = indexOf(key);
         return values.get(index);
     }
 
     @Override
-    public V put(@NotNull T key, V value) {
+    public V put(@NotNull K key, V value) {
         if (keys.isEmpty()) {
             keys.add(key);
             values.add(value);
         }
 
         int index = find(key, 0, size() - 1);
-        T lastKey = null;
+        K lastKey = null;
         V lastValue = null;
 
         if (index < 0) {
@@ -66,18 +65,18 @@ public class ArrayMap<T extends Comparable<T>, V> implements Map<T, V>, Comparat
     }
 
     @Override
-    public Iterator<T> keys() {
+    public Iterator<K> keys() {
         return null;
 
     }
 
-    public int indexOf(T key) {
+    public int indexOf(K key) {
         int index = find(key, 0, size() - 1);
         if (index >= 0) return index;
         return -1;
     }
 
-    public int find(T searchedKey, int low, int high) {
+    public int find(K searchedKey, int low, int high) {
         while (low <= high) {
             int middle = low + (high - low) / 2;
 
@@ -92,21 +91,21 @@ public class ArrayMap<T extends Comparable<T>, V> implements Map<T, V>, Comparat
     }
 
     @Override
-    public int compare(T o1, T o2) {
+    public int compare(K o1, K o2) {
         return o1.compareTo(o2);
     }
 
 
     //para testear sin acarrear posibles errores del put
-    protected void addKey(T key) {
+    protected void addKey(K key) {
         keys.add(key);
     }
 
-    protected List<T> getKeys() {
+    protected List<K> getKeys() {
         return keys;
     }
 
-    protected boolean containsKeyt(T key) {
+    protected boolean containsKeyt(K key) {
         return keys.contains(key);
     }
 
