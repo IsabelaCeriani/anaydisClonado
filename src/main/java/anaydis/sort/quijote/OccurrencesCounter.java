@@ -1,7 +1,7 @@
 package anaydis.sort.quijote;
 
 
-import anaydis.sort.maps.RandomizedMap;
+import anaydis.search.RandomizedMap;
 
 import java.io.*;
 import java.util.Scanner;

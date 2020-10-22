@@ -1,11 +1,11 @@
-package anaydis.sort.maps;
+package anaydis.search;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ArrayMapTest<Integer, String>extends ArrayMap {
 
-    ArrayMap<java.lang.Integer,String> map = new ArrayMap<java.lang.Integer, String>();
+    ArrayMap<java.lang.Integer,String> map = new ArrayMap<>();
 
 
     @Test

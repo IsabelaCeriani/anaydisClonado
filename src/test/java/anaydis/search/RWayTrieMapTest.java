@@ -1,12 +1,8 @@
-package anaydis.sort.maps;
+package anaydis.search;
 
-import org.jetbrains.annotations.NotNull;
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Iterator;
-
-public class RWayTrieMapTest extends RWayTrieMap<Integer>{
+public class RWayTrieMapTest extends RWayTrieMap<Integer> {
 
     RWayTrieMap<String> tree = new RWayTrieMap<>();
 

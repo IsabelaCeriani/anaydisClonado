@@ -1,13 +1,14 @@
-package anaydis.sort.maps;
+package anaydis.search;
 
 import anaydis.search.Map;
+import anaydis.search.Node;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
 public class RWayTrieMap<T> implements Map<String, T> {
 
-    private  Node<T> root;
+    private Node<T> root;
     private int size;
 
     public RWayTrieMap() {

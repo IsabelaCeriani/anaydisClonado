@@ -1,4 +1,5 @@
-package anaydis.sort.maps;
+package anaydis.search;
+import anaydis.search.DoubleNode;
 import anaydis.search.Map;
 import org.jetbrains.annotations.NotNull;
 

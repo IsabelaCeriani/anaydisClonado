@@ -1,4 +1,4 @@
-package anaydis.sort.maps;
+package anaydis.search;
 import anaydis.search.Map;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,7 +9,7 @@ public class ArrayMap<K extends Comparable<K>, V> implements Map<K, V>, Comparat
     private final List<K> keys = new ArrayList<>();
     private final List<V> values = new ArrayList<>();
 
-  
+
 
     @Override
     public int size() {

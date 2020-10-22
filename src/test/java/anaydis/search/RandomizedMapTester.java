@@ -1,7 +1,6 @@
-package anaydis.sort.maps;
+package anaydis.search;
 
 import junit.framework.TestCase;
-import org.assertj.core.data.Percentage;
 import org.junit.Assert;
 
 

@@ -1,4 +1,4 @@
-package anaydis.sort.maps;
+package anaydis.search;
 
 
 public class DoubleNode<T, V>{
