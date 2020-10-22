@@ -84,37 +84,7 @@ public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Com
 
     @Override
     public Iterator<T> keys() {
-        return new Iterator<> () {
-            final Stack<DoubleNode<T, V>> stack;
-
-            {
-                stack = new Stack<>();
-                while (root != null) {
-                    stack.push(root);
-                    root = root.left;
-                }
-            }
-
-
-            @Override
-            public boolean hasNext() {
-                return !stack.isEmpty();
-            }
-
-            @Override
-            public T next() {
-                DoubleNode<T, V> node = stack.pop();
-                T result = node.key;
-                if (node.right != null) {
-                    node = node.right;
-                    while (node != null) {
-                        stack.push(node);
-                        node = node.left;
-                    }
-                }
-                return result;
-            }
-        };
+        return (Iterator) keys();
     }
 
 
