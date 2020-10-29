@@ -50,26 +50,31 @@ public class RWayTrieMap<T> implements Map<String, T> {
     }
 
 
-     protected Node<T> find(Node<T> node, String word, int d) {
-        if (node == null) {
-            return null;
-        }
-        if (d == word.length()) {
+     protected Node<T> find(Node<T> node, String word, int level) {
+        if (node == null) return null;
+
+        if (level == word.length()) {
             return node;
         }
-        char c = word.charAt(d);
-        return find(node.next[c], word, d + 1);
+        char c = word.charAt(level);
+        return find(node.next[c], word, level + 1);
     }
 
     @Override
     public T put(@NotNull String key, T value) {
         root = put(root, key, value, 0);
+        size++;
         return root.elem;
     }
 
     protected Node<T> put(Node<T> node, String key, T value, int level) {
         if(node == null) {
             Node<T> result = new Node<>(value);
+            if (level < key.length()) {
+                char c = key.charAt(level);
+                result.next[c] = put(result.next[c], key, value, level+1);
+            }
+
             return result;
         }
 
@@ -82,6 +87,14 @@ public class RWayTrieMap<T> implements Map<String, T> {
             node.next[c] = put(node.next[c], key, value, level + 1);
             return node;
             }
+
+    protected Node<T> getRoot(){
+        return this.root;
+    }
+
+    protected void setRoot(Node<T> newNode){
+        root=newNode;
+    }
 
 
 }

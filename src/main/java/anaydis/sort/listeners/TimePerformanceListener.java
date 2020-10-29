@@ -10,6 +10,7 @@ public class TimePerformanceListener implements SorterListener {
     private double startTime;
     private List<Double> timesCalculated = new ArrayList<>();
 
+
     @Override
     public void box(int from, int to) {
 
