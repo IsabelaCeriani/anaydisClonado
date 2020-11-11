@@ -30,12 +30,12 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
 
 
 
-//    private boolean containsKey(K key, DoubleNode<K, V> node){
-//        if(node == null) return false;
-//        final int compare = comparator.compare(key, node.key);
-//        if(compare == 0) return true;
-//        return compare > 0 ? containsKey(key, node.right): containsKey(key, node.left);
-//    }
+    private boolean containsKey(K key, DoubleNode<K, V> node){
+        if(node == null) return false;
+        final int compare = comparator.compare(key, node.key);
+        if(compare == 0) return true;
+        return compare > 0 ? containsKey(key, node.right): containsKey(key, node.left);
+    }
 
     private V get(K key, DoubleNode<K,V> node){
         if(node == null) return null;
@@ -57,7 +57,7 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
 
     @Override
     public boolean containsKey(@NotNull K k) {
-        return get(k, head) != null;
+        return containsKey(k, head);
     }
 
 

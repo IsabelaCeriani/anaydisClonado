@@ -64,7 +64,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
 
     @Override
     public Iterator<K> keys() {
-        return null;
+        return keys.iterator();
 
     }
 

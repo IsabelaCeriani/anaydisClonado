@@ -1,5 +1,6 @@
 package anaydis.search;
 
+import anaydis.immutable.dynamicStack.DynamicStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -87,7 +88,28 @@ public class RandomizedTreeMap<T , V> implements Map<T, V>{
 
     @Override
     public Iterator<T> keys() {
-        return null;
+        DynamicStack<DoubleNode<T, V>> stack = new DynamicStack<>();
+
+        return new Iterator<T>() {
+            DoubleNode<T, V> current = root;
+            @Override
+            public boolean hasNext() {
+                return !(current == null && stack.isEmpty());
+            }
+
+            @Override
+            public T next() {
+                if(!hasNext()) throw new IllegalStateException("No elements in keys");
+                while (current!= null){
+                    stack.push(current);
+                    current = current.left;
+                }
+                DoubleNode<T, V> aux = stack.pop();
+                current = aux.right;
+                return aux.key;
+            }
+        };
+
     }
 
 
