@@ -32,6 +32,6 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
 
     @Override
     public void decode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
-       
+
     }
 }

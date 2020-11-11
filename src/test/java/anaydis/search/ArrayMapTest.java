@@ -162,7 +162,7 @@ public class ArrayMapTest<Integer, String>  {
         //testeo si al buscar un numero que no se encuentra en el mapa me devuelve el indice en el que debria estar en valor negativo
         //el 6 deberia estar entre el 5 y el 8 en el indice 5
         int indexOfSix = map.find(6, 0, 5);
-        Assert.assertEquals(-5, indexOfSix);
+        Assert.assertEquals(-6, indexOfSix);
 
 
 

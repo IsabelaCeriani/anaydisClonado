@@ -3,11 +3,19 @@ package anaydis.search;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
+import java.util.Comparator;
 
 
-public class RandomizedMapTester extends TestCase {
+public class RandomizedTreeMapTester extends TestCase {
 
-    RandomizedMap<Integer, String> tree = new RandomizedMap<>();
+    Comparator<Integer> comparator =  new Comparator<Integer>() {
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return  o1-o2;
+        }
+    };
+
+    RandomizedTreeMap<Integer, String> tree = new RandomizedTreeMap<>(comparator);
 
 
     public void testGet() {
@@ -82,12 +90,12 @@ public class RandomizedMapTester extends TestCase {
 
 
     public void testCompare() {
-        int actual = tree.compare(1, 4);
-        int actual1 = tree.compare(4, 1);
-        int actual2 = tree.compare(1, 1);
-        Assert.assertEquals(-1, actual);
-        Assert.assertEquals(1, actual1);
-        Assert.assertEquals(0, actual2);
+        int actual = tree.getComparator().compare(1, 4);
+        int actual1 = tree.getComparator().compare(4, 1);
+        int actual2 = tree.getComparator().compare(1, 1);
+        Assert.assertTrue(actual<0);
+        Assert.assertTrue(actual1>0);
+        Assert.assertTrue(actual2==0);
     }
 
     public void testClear() {

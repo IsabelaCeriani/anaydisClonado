@@ -29,7 +29,7 @@ public class RWayTrieMap<T> implements Map<String, T> {
     @Override
     public T get(@NotNull String key) {
         Node<T> node = find(root, key, 0);
-        return node.elem;
+        return node != null ? node.elem : null;
     }
 
 
@@ -62,9 +62,8 @@ public class RWayTrieMap<T> implements Map<String, T> {
      protected Node<T> find(Node<T> node, String word, int level) {
         if (node == null) return null;
 
-        if (level == word.length()) {
-            return node;
-        }
+        if (level == word.length()) return node;
+
         char c = word.charAt(level);
         return find(node.next[c], word, level + 1);
     }

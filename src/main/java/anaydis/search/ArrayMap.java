@@ -5,11 +5,13 @@ import java.util.*;
 
 public class ArrayMap<K, V> implements Map<K, V> {
 
-    private final List<K> keys = new ArrayList<>();
-    private final List<V> values = new ArrayList<>();
+    private final List<K> keys;
+    private final List<V> values;
     private final Comparator<K> comparator;
 
     public ArrayMap(Comparator<K> comparator) {
+        this.keys = new ArrayList<>();
+        this.values = new ArrayList<>();
         this.comparator = comparator;
     }
 
@@ -26,6 +28,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
     @Override
     public V get(@NotNull K key) {
         int index = indexOf(key);
+        if (index < 0) return null;
         return values.get(index);
     }
 
@@ -34,25 +37,18 @@ public class ArrayMap<K, V> implements Map<K, V> {
         if (keys.isEmpty()) {
             keys.add(key);
             values.add(value);
+
         }
 
         int index = find(key, 0, size() - 1);
-        K lastKey = null;
-        V lastValue = null;
+
 
         if (index < 0) {
-            index = -index;
-            for (int i = index + 1; i < size(); i++) {
-                lastKey = keys.set(i, keys.get(i + 1));
-                lastValue = values.set(i, values.get(i + 1));
-            }
-            keys.add(lastKey);
-            values.add(lastValue);
-
-            keys.set(index, key);
-            values.set(index, value);
+            keys.add(-index - 1, key);
+            values.add(-index - 1, value);
             return null;
         }
+
         return values.set(index, value);
 
 
@@ -74,22 +70,21 @@ public class ArrayMap<K, V> implements Map<K, V> {
 
     public int indexOf(K key) {
         int index = find(key, 0, size() - 1);
-        if (index >= 0) return index;
-        return -1;
+         return (index >= 0) ?  index:  -1;
+
     }
 
     public int find(K searchedKey, int low, int high) {
         while (low <= high) {
-            int middle = low + (high - low) / 2;
+            int middle =  (high + low) / 2;
 
             int compare = comparator.compare(searchedKey, keys.get(middle));
 
             if (compare == 0) return middle;
-            if (compare < 0) high = middle - 1;
-            if (compare > 0) low = middle + 1;
+            return compare > 0 ? find(searchedKey, middle + 1, high) : find(searchedKey, low, middle - 1);
         }
 
-        return -(low);
+        return -(low + 1);
     }
 
 

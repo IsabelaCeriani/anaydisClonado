@@ -1,14 +1,23 @@
 package anaydis.compression.quijote;
 
 
-import anaydis.search.RandomizedMap;
+import anaydis.search.RandomizedTreeMap;
 
 import java.io.*;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class OccurrencesCounter {
 
-    RandomizedMap<String, Integer> occurrences = new RandomizedMap<>();
+
+    Comparator<String> comparator =  new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            return  o1.compareTo(o2);
+        }
+    };
+    RandomizedTreeMap<String, Integer> occurrences = new RandomizedTreeMap<>(comparator);
+
     File quijote = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/src/main/java/anaydis/sort/quijote/quijote.txt");
     Scanner scanner = new Scanner(quijote);
     FileReader fileReader;
@@ -56,7 +65,7 @@ public class OccurrencesCounter {
 //
 //    }
 
-    public RandomizedMap<String, Integer> getOccurrences() {
+    public RandomizedTreeMap<String, Integer> getOccurrences() {
         return occurrences;
     }
 }

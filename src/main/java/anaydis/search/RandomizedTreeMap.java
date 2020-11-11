@@ -5,14 +5,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 
-public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Comparator<T> {
+public class RandomizedTreeMap<T , V> implements Map<T, V>{
 
     private DoubleNode<T, V> root;
     private int size;
+    private Comparator<T> comparator;
 
-    public RandomizedMap(){
+    public RandomizedTreeMap(Comparator<T> comparator){
         root = null;
         size= 0;
+        this.comparator = comparator;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Com
         if (Math.random()< 0.5) return put(node, key, value);
 
 
-        int compareValue = compare(key, node.key);
+        int compareValue = comparator.compare(key, node.key);
 
 
         if (compareValue < 0) {
@@ -91,7 +93,7 @@ public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Com
 
     public DoubleNode<T, V> find(DoubleNode<T, V> node, T key) {
         if (node == null ) return null;
-        int compareValue = compare(key, node.key);
+        int compareValue = comparator.compare(key, node.key);
 
         if(compareValue == 0) return node;
         return (compareValue < 0)?find(node.left, key): find(node.right, key);
@@ -100,14 +102,6 @@ public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Com
     }
 
 
-
-
-
-    @Override
-    public int compare(T o1, T o2) {
-        return o1.compareTo(o2);
-
-    }
 
 
     public DoubleNode<T, V> rotateLeft(DoubleNode<T, V> node)  {
@@ -142,5 +136,7 @@ public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Com
         return this.root;
     }
 
-
+    public Comparator<T> getComparator() {
+        return comparator;
+    }
 }
