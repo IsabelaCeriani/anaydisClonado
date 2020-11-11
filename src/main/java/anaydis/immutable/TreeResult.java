@@ -1,4 +1,4 @@
-package anaydis.inmutable;
+package anaydis.immutable;
 
 import anaydis.search.DoubleNode;
 

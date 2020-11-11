@@ -1,6 +1,5 @@
-package anaydis.inmutable;
+package anaydis.immutable;
 
-import anaydis.immutable.Map;
 import anaydis.search.DoubleNode;
 import org.jetbrains.annotations.NotNull;
 

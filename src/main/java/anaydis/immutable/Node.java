@@ -1,10 +1,6 @@
-package anaydis.inmutable;
+package anaydis.immutable;
 
-import anaydis.immutable.List;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class Node<T> implements List<T> {
 

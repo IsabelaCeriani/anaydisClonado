@@ -1,8 +1,5 @@
-package anaydis.inmutable;
+package anaydis.immutable;
 
-import anaydis.immutable.List;
-import anaydis.immutable.Queue;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -16,7 +13,7 @@ public class BankersQueue<T> implements Queue<T> {
         this.out = List.nil();
     }
 
-    public BankersQueue(List<T> in, List<T> out) {
+    public BankersQueue(@NotNull  List<T> in, @NotNull List<T> out) {
         this.in = in;
         this.out = out;
     }
