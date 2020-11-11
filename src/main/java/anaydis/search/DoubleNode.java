@@ -15,6 +15,14 @@ public class DoubleNode<T, V>{
     }
 
 
+    public DoubleNode(T key,V elem, DoubleNode<T,V> left, DoubleNode<T, V> right) {
+        this.key =key;
+        this.elem = elem;
+        this.left = left;
+        this. right = right;
+    }
+
+
 
 
 }

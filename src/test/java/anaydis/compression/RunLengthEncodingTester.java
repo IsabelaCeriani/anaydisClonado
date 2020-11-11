@@ -4,13 +4,13 @@ import org.junit.Test;
 import java.io.File;
 import java.io.*;
 
+
 public class RunLengthEncodingTester {
 
     RunLengthEncoding  runLengthEncoding = new RunLengthEncoding();
 
     @Test
     public void testEncode() throws IOException {
-        //public void encode(@NotNull InputStream input, @NotNull OutputStream output)
         File file = new File("Listado de personas usando stream");
 
 
@@ -35,6 +35,10 @@ public class RunLengthEncodingTester {
 
 
         //runLengthEncoding.encode(fileInputStream, empty);
+
+
+
+
 
 
     }

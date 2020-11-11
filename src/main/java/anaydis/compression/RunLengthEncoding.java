@@ -9,7 +9,6 @@ import java.io.OutputStream;
 public class RunLengthEncoding implements anaydis.compression.Compressor{
 
 
-
     @Override
     public void encode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
         int data = input.read();
@@ -18,20 +17,32 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
             int i = data;
             while(data == i){
                 count++;
-                data = input.read();
+                i = input.read();
             }
-            if(count != 1) output.write(count+data);
+            if(count != 1) output.write(data);
+            output.write(count);
             output.write(data);
+            count = 0;
             data = input.read();
         }
 
-        output.close();
+
+
+
+
     }
 
 
 
     @Override
     public void decode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
+        while (input.available() > 0){
+            int counter = input.read();
+            char data = (char) input.read();
+            for (int i = 0; i < counter; i++) {
+                output.write(data);
+            }
+        }
 
     }
 }

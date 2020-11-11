@@ -4,10 +4,10 @@ import anaydis.immutable.dynamicStack.DynamicStack;
 import anaydis.search.DoubleNode;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
+
 
 public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
 
@@ -64,7 +64,7 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
     @Override
     public Map<K, V> put(@NotNull K k, V v) {
         TreeResult<K, V> result = put(head, k, v);
-        return new BinaryTree<>(comparator, result.getNode(), result.getSize());
+        return new BinaryTree<K, V>(comparator, result.getNode(), result.getSize());
     }
 
     private TreeResult<K,V> put(DoubleNode<K, V> node, @NotNull K k, V v) {
@@ -72,19 +72,13 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
         int comp = comparator.compare(node.key, k);
 
         if(comp > 0){
-            final TreeResult<K, V> result = put(node.left, k, v);
-            DoubleNode<K, V> newNode = new DoubleNode<>(k, v);
-            newNode.left = result.getNode();
-            newNode.right = node.right;
+            TreeResult<K, V> result = put(node.left, k, v);
+            DoubleNode<K, V> newNode = new DoubleNode<K, V>(k, v, result.getNode(), node.right);
             return new TreeResult<>(newNode, result.getSize());
-        }
-
-        if(comp == 0) return new TreeResult<>(new DoubleNode<>(k, v), size);
+        }if(comp == 0) return new TreeResult<>(new DoubleNode<>(k, v), size);
 
         final TreeResult<K, V> result = put(node.right, k, v);
-        DoubleNode<K, V> newNode = new DoubleNode<>(k, v);
-        newNode.left = node.left;
-        newNode.right = result.getNode();
+        DoubleNode<K, V> newNode = new DoubleNode<>(k, v, node.left, result.getNode());
         return new TreeResult<>(newNode, result.getSize());
 
     }
@@ -148,5 +142,9 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
                 return aux.key;
             }
         };
+    }
+
+    public DoubleNode<K, V> getHead() {
+        return head;
     }
 }
