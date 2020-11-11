@@ -89,7 +89,40 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
 
     }
 
-    
+
+    /**     @Override
+    public Iterator<K> keys() {
+    return new Iterator<K>() {
+    ArrayList<DoubleNode<K, V>>  nodesSorted = new ArrayList<>();
+    int index = -1;
+
+
+    private void inorder(DoubleNode<K, V> root) {
+    if (root == null) return;
+    this.inorder(root.left);
+    this.nodesSorted.add(root);
+    this.inorder(root.right);
+    }
+
+
+     @Override
+     public boolean hasNext() {
+     inorder(head);
+     return this.index + 1 < this.nodesSorted.size();
+     }
+
+     @Override
+     public K next() {
+     return this.nodesSorted.get(++this.index).key;
+     }
+
+
+     };
+
+     }
+     **/
+
+
     @Override
     public Iterator<K> keys() {
         DynamicStack<DoubleNode<K,V>> stack = new DynamicStack();

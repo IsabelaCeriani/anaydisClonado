@@ -28,7 +28,7 @@ public class RandomizedMapTester extends TestCase {
 
     public void testFind() {
         DoubleNode<Integer, String> node = new DoubleNode<>(1, "a");
-        Assert.assertEquals(null, tree.find(node, 3));
+        Assert.assertNull(tree.find(node, 3));
 
         tree.put(1, "a");
         Assert.assertEquals(node, tree.find(node, 1));
@@ -54,18 +54,18 @@ public class RandomizedMapTester extends TestCase {
 
     public void testRootPut() {
         DoubleNode<Integer, String> node = tree.put(tree.getRoot(), 2, "B");
-        Assert.assertTrue(node.key == 2 && node.elem == "B");
+        Assert.assertTrue(node.key == 2 && node.elem.equals("B"));
 
         //testeo que sobreescriba al agregar un valor con una clave ya ingresada
         DoubleNode<Integer, String> newNode = tree.put(tree.getRoot(), 2, "A");
-        Assert.assertTrue(newNode.key == 2 && newNode.elem == "A");
+        Assert.assertTrue(newNode.key == 2 && newNode.elem.equals("A"));
 
         //testeo que inserte bien las keys con los valores correctamente mapeados tanto a izq como a derecha
         DoubleNode<Integer, String> rightNode = tree.put(tree.getRoot(),3, "B");
-        Assert.assertTrue(rightNode.key == 3 && rightNode.elem == "B");
+        Assert.assertTrue(rightNode.key == 3 && rightNode.elem.equals("B"));
 
         DoubleNode<Integer, String> leftNode =tree.put(tree.getRoot(),1, "B");
-        Assert.assertTrue(leftNode.key == 1 && leftNode.elem == "B");
+        Assert.assertTrue(leftNode.key == 1 && leftNode.elem.equals("B"));
 
 
 
@@ -95,7 +95,7 @@ public class RandomizedMapTester extends TestCase {
         tree.put(3, "9");
         tree.put(1, "9");
         tree.clear(tree.getRoot());
-        Assert.assertTrue(tree.getRoot().key == null);
+        Assert.assertNull(tree.getRoot().key);
 
     }
 
@@ -105,7 +105,7 @@ public class RandomizedMapTester extends TestCase {
         tree.put(1, "9");
         tree.clear();
         Assert.assertTrue(tree.isEmpty());
-        Assert.assertTrue(tree.size() == 0);
+        Assert.assertEquals(0, tree.size());
     }
 
     public void testGetHeight() {

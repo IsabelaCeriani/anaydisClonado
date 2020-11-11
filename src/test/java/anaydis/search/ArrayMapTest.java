@@ -49,9 +49,9 @@ public class ArrayMapTest<Integer, String>  {
         map.put(2, (String) "B");
         map.put(3, (String) "C");
 
-        String a = (String) map.get(1);
-        String b = (String) map.get(2);
-        String c = (String) map.get(3);
+        String a =  map.get(1);
+        String b =  map.get(2);
+        String c = map.get(3);
 
         Assert.assertEquals("A", a);
         Assert.assertEquals("B", b);
@@ -84,7 +84,7 @@ public class ArrayMapTest<Integer, String>  {
         int indexOfTwo = map.indexOf(2);
         int indexOfThree = map.indexOf(3);
 
-        map.getKeys().forEach(k -> System.out.println(k));
+        map.getKeys().forEach(System.out::println);
 
         Assert.assertEquals(0, indexOfOne);
         Assert.assertEquals(1, indexOfTwo);
@@ -103,7 +103,7 @@ public class ArrayMapTest<Integer, String>  {
 
         map.clear();
 
-        Assert.assertTrue(map.size() == 0);
+        Assert.assertEquals(0, map.size());
     }
 
     //falta

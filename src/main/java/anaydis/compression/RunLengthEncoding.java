@@ -32,13 +32,6 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
 
     @Override
     public void decode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
-        int data = input.read();
-        while(data!= -1){
-           
-
-        }
-
-        input.close();
-        output.close();
+       
     }
 }
