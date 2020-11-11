@@ -12,7 +12,7 @@ public class RunLengthEncodingTester {
     public void testEncode() throws IOException {
         //public void encode(@NotNull InputStream input, @NotNull OutputStream output)
         File file = new File("Listado de personas usando stream");
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
+
 
         FileOutputStream outputStream = new FileOutputStream(file);
         ObjectOutputStream oos = new ObjectOutputStream(outputStream);
@@ -21,7 +21,7 @@ public class RunLengthEncodingTester {
         FileInputStream fileInputStream = new FileInputStream(file);
 
 
-        oos.writeChar(00000001);
+        oos.writeChar('a');
         oos.writeChar('a');
         oos.writeChar('b');
 
@@ -34,9 +34,7 @@ public class RunLengthEncodingTester {
 
 
 
-
-
-        runLengthEncoding.encode(fileInputStream, empty);
+        //runLengthEncoding.encode(fileInputStream, empty);
 
 
     }

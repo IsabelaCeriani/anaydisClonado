@@ -1,7 +1,6 @@
 package anaydis.inmutable;
 
 import anaydis.immutable.Map;
-import anaydis.immutable.Queue;
 import anaydis.search.DoubleNode;
 import org.jetbrains.annotations.NotNull;
 
@@ -57,7 +56,7 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
     @Override
     public Map<K, V> put(@NotNull K k, V v) {
         TreeResult<K, V> result = put(head, k, v);
-        return new BinaryTree(comparator, result.getNode(), result.getSize());
+        return new BinaryTree<>(comparator, result.getNode(), result.getSize());
     }
 
     private TreeResult<K,V> put(DoubleNode<K, V> node, @NotNull K k, V v) {
@@ -86,8 +85,8 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
 
     @Override
     public Iterator<K> keys() {
-        return new Iterator<>() {
-            ArrayList<DoubleNode<K, V>> nodesSorted = new ArrayList<DoubleNode<K, V>>();
+        return new Iterator<K>() {
+            ArrayList<DoubleNode<K, V>>  nodesSorted = new ArrayList<>();
             int index = -1;
 
 
