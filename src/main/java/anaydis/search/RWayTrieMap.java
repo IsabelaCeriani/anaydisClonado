@@ -10,10 +10,22 @@ public class RWayTrieMap<T> implements Map<String, T> {
 
     private Node<T> root;
     private int size;
+    private T prev;
 
     public RWayTrieMap() {
         root=null;
         size=0;
+    }
+
+    //implementar el put usando Result
+    private class Result{
+        private final Node<T> node;
+        private final T prevElem;
+
+        public Result(Node<T> node, T prevElem) {
+            this.node = node;
+            this.prevElem = prevElem;
+        }
     }
 
     @Override
@@ -71,30 +83,33 @@ public class RWayTrieMap<T> implements Map<String, T> {
     @Override
     public T put(@NotNull String key, T value) {
         root = put(root, key, value, 0);
-        size++;
-        return root.elem;
+        return prev;
     }
 
     protected Node<T> put(Node<T> node, String key, T value, int level) {
         if(node == null) {
-            Node<T> result = new Node<>(value);
+            node = new Node<>(value);
             if (level < key.length()) {
                 char c = key.charAt(level);
-                result.next[c] = put(result.next[c], key, value, level+1);
-            }
-
-            return result;
-        }
-
-            if(level == key.length()) {
+                node.next[c] = put(node.next[c], key, value, level+1);
+            }else{
                 node.elem = value;
-                return node;
+                size++;
+            }
+        }else {
+
+            if (level < key.length()) {
+                char c = key.charAt(level);
+                node.next[c] = put(node.next[c], key, value, level + 1);
             }
 
-            char c = key.charAt(level);
-            node.next[c] = put(node.next[c], key, value, level + 1);
-            return node;
-            }
+            T prev = node.elem;
+            node.elem  = value;
+
+        }
+        return node;
+
+    }
 
     protected Node<T> getRoot(){
         return this.root;
