@@ -1,4 +1,4 @@
-package anaydis.sort.quijote;
+package anaydis.compression.quijote;
 
 
 import anaydis.search.RandomizedMap;

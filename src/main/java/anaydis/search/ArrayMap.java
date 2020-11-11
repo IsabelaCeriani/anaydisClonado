@@ -1,5 +1,4 @@
 package anaydis.search;
-import anaydis.search.Map;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -8,7 +7,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
 
     private final List<K> keys = new ArrayList<>();
     private final List<V> values = new ArrayList<>();
-    private Comparator<K> comparator;
+    private final Comparator<K> comparator;
 
     public ArrayMap(Comparator<K> comparator) {
         this.comparator = comparator;

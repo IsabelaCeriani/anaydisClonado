@@ -8,11 +8,13 @@ import java.io.OutputStream;
 
 public class RunLengthEncoding implements anaydis.compression.Compressor{
 
+
+
     @Override
     public void encode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
         int data = input.read();
+        int count = 0 ;
         while(data!= -1){
-            int count = 1;
             int i = data;
             while(data == i){
                 count++;
@@ -22,9 +24,10 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
             output.write(data);
         }
 
-        input.close();
         output.close();
     }
+
+
 
     @Override
     public void decode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {

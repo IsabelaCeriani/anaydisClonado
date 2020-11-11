@@ -1,6 +1,5 @@
 package anaydis.search;
-import anaydis.search.DoubleNode;
-import anaydis.search.Map;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -95,9 +94,7 @@ public class RandomizedMap<T extends Comparable<T>, V> implements Map<T, V>, Com
         int compareValue = compare(key, node.key);
 
         if(compareValue == 0) return node;
-        if(compareValue < 0)return find(node.left, key);
-
-        return find(node.right, key);
+        return (compareValue < 0)?find(node.left, key): find(node.right, key);
 
 
     }

@@ -1,10 +1,10 @@
 package anaydis.search;
 
-import anaydis.search.Map;
-import anaydis.search.Node;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class RWayTrieMap<T> implements Map<String, T> {
 
@@ -37,16 +37,25 @@ public class RWayTrieMap<T> implements Map<String, T> {
     @Override
     public void clear() {
         size =0;
-        for (Node<T> t: root.next) {
-            t = null;
-        }
+        root = null;
     }
 
 
 
     @Override
     public Iterator<String> keys() {
-        return null;
+        List<String> list = new ArrayList<>();
+        keys(root, "", list);
+        return list.iterator();
+    }
+
+    private void keys(Node<T> node, String string, List<String> list){
+        if(node == null) return;
+
+        if(node.elem != null)list.add(string);
+        for (int i = 0; i < node.next.length; i++) {
+            keys(node.next[i], string+ i, list);
+        }
     }
 
 

@@ -35,6 +35,12 @@ public class Node<T> implements List<T> {
     @NotNull
     @Override
     public List<T> reverse() {
-     return null;
+        List<T> reversed = List.nil(), current = this;
+        while (!current.isEmpty()){
+            reversed = List.cons(current.head(), reversed);
+            current = current.tail();
+        }
+        return reversed;
+
     }
 }

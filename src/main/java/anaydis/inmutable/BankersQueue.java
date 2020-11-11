@@ -1,23 +1,47 @@
 package anaydis.inmutable;
 
+import anaydis.immutable.List;
 import anaydis.immutable.Queue;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNull;
+
 
 public class BankersQueue<T> implements Queue<T> {
+
+    private final List<T> in;
+    private final List<T> out;
+
+    public BankersQueue() {
+        this.in = List.nil();
+        this.out = List.nil();
+    }
+
+    public BankersQueue(List<T> in, List<T> out) {
+        this.in = in;
+        this.out = out;
+    }
+
     @NotNull
     @Override
     public Queue<T> enqueue(@NotNull T value) {
-        return null;
+       final List<T> newIn =  List.cons(value, in);
+        return new BankersQueue<>(newIn, out);
     }
 
     @NotNull
     @Override
     public Result<T> dequeue() {
-        return null;
+        if(out.isEmpty()){
+            if(in.isEmpty()) throw  new IllegalStateException("Queue is empty");
+            final List<T> reverse= in.reverse();
+            return new Result<>(reverse.head(), new BankersQueue<>(List.nil(),reverse.tail()));
+        }else{
+            return new Result<>(out.head(), new BankersQueue<>(in, out.tail()));
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return in.isEmpty() && out.isEmpty();
     }
 }

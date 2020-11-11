@@ -1,11 +1,8 @@
 package anaydis.sort;
 
-import anaydis.sort.quijote.OccurrencesCounter;
-import org.junit.Assert;
-import org.junit.Test;
+import anaydis.compression.quijote.OccurrencesCounter;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class TestQuijote {
 
