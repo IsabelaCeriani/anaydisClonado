@@ -22,6 +22,7 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
             }
             if(count != 1) output.write(count+data);
             output.write(data);
+            data = input.read();
         }
 
         output.close();
