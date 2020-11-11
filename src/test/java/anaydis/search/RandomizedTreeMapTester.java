@@ -116,19 +116,7 @@ public class RandomizedTreeMapTester extends TestCase {
         Assert.assertEquals(0, tree.size());
     }
 
-    public void testGetHeight() {
-        Assert.assertEquals(-1, tree.getHeight());
 
-        tree.put(1, "a");
-        Assert.assertEquals(0, tree.getHeight());
-
-        tree.put(2, "a");
-        tree.put(3, "a");
-        tree.put(4, "a");
-        tree.put(5, "a");
-        tree.put(6, "a");
-        Assert.assertEquals(5, tree.getHeight());
-    }
 
     public void testGetRoot() {
         tree.put(2, "A");

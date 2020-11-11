@@ -173,9 +173,7 @@ public class RandomizedTreeMap<T , V> implements Map<T, V>{
 
 
     //for testing
-    public int getHeight(){
-        return getHeight(root);
-    }
+
     public int getHeight(DoubleNode<T, V> node) {
 
         if (node == null) return -1;
