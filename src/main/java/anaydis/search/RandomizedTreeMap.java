@@ -37,40 +37,71 @@ public class RandomizedTreeMap<T , V> implements Map<T, V>{
     //deberian retornar el elemento que habia en el nodo anterior, no en el nuevo
     @Override
     public V put(@NotNull T key, V value) {
-         root = put(root, key, value);
-        return root.elem;
+        TreeMapResult<T, V> result = Math.random() < 0.5 ? rootPut(root, key, value) : put(root, key, value);
+         root = result.getNewNode();
+        return result.getPrevValue();
     }
 
-    public DoubleNode<T, V> put(DoubleNode<T, V> node, @NotNull T key, V value) {
+    public TreeMapResult<T, V> put(DoubleNode<T, V> node, @NotNull T key, V value) {
         if (node == null) {
             node = new DoubleNode<>(key, value);
             size++;
-            return node;
+            return new TreeMapResult<>(node, null);
         }
-
-
-        if (Math.random()< 0.5) return put(node, key, value);
-
-
         int compareValue = comparator.compare(key, node.key);
 
+        if (compareValue < 0) {
+            TreeMapResult<T, V> result =  put(node.left, key, value);
+            node.left = result.getNewNode();
+            return new TreeMapResult<T, V>(node, result.getPrevValue());
+        }else if (compareValue > 0) {
+            TreeMapResult<T, V> result = rootPut(node.right, key, value);
+            node.right = result.getNewNode();
+            return new TreeMapResult<T, V>(node, result.getPrevValue());
+
+
+        }else{
+
+            V prevElem = node.elem;
+            node.elem = value;
+            return new TreeMapResult<T, V>(node, prevElem);
+        }
+
+
+
+    }
+
+    public TreeMapResult<T, V> rootPut(DoubleNode<T, V> node, @NotNull T key, V value) {
+        if (node == null) {
+            node = new DoubleNode<>(key, value);
+            size++;
+            return new TreeMapResult<>(node, null);
+        }
+        int compareValue = comparator.compare(key, node.key);
 
         if (compareValue < 0) {
-            node.left = put(node.left, key, value);
-        }
+            TreeMapResult<T, V> result =  rootPut(node.left, key, value);
+            node.left = result.getNewNode();
+            node = rotateRight(node);
+            return new TreeMapResult<T, V>(node, result.getPrevValue());
+        }else if (compareValue > 0) {
+            TreeMapResult<T, V> result = rootPut(node.right, key, value);
+            node.right = result.getNewNode();
+            node = rotateLeft(node);
+            return new TreeMapResult<T, V>(node, result.getPrevValue());
 
-        if (compareValue > 0) {
-            node.right = put(node.right, key, value);
 
+        }else{
 
-        }
-        if(compareValue == 0){
+            V prevElem = node.elem;
             node.elem = value;
-            return node;
+            return new TreeMapResult<T, V>(node, prevElem);
         }
 
-        return node;
+
     }
+
+
 
 
     @Override
