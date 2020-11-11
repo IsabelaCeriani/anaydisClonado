@@ -19,6 +19,13 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
         this.size = size;
     }
 
+    public BinaryTree(Comparator<K> comparator) {
+        this.comparator = comparator;
+        this.head = null;
+        size = 0;
+
+    }
+
 
 
 //    private boolean containsKey(K key, DoubleNode<K, V> node){
