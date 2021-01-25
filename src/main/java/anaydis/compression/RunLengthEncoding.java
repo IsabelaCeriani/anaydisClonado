@@ -47,7 +47,7 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
             }
             output.write(count);
             output.write(position);
-
+            position=next;
 
         }
 
@@ -88,6 +88,7 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
             char data = (char) input.read();
             for (int i = 0; i < counter; i++) {
                 output.write(data);
+                counter = input.read();
             }
         }
 
