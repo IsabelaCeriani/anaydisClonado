@@ -107,7 +107,7 @@ public class TestPractice03 extends SorterTest {
     @Test public void testQuickThreePartitionWithIntegerGenerator() {
         testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 10);
         testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 50);
-        testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 10000);
+        testSorter(createIntegerDataSetGenerator(), SorterType.QUICK_THREE_PARTITION, 1000);
     }
 
     @Test public void testQuickThreePartitionWithStringGenerator() {
