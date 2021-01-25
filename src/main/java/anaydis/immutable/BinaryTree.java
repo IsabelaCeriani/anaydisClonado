@@ -124,7 +124,7 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
     public Iterator<K> keys() {
         DynamicStack<DoubleNode<K,V>> stack = new DynamicStack<>();
 
-        return new Iterator<>() {
+        return new Iterator<K>() {
 
             DoubleNode<K, V> current = head;
 
