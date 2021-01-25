@@ -1,6 +1,6 @@
 package anaydis.sort;
 
-import anaydis.compression.quijote.OccurrencesCounter;
+import anaydis.search.quijote.OccurrencesCounter;
 
 import java.io.FileNotFoundException;
 

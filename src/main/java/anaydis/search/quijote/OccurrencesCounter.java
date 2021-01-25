@@ -1,4 +1,4 @@
-package anaydis.compression.quijote;
+package anaydis.search.quijote;
 
 
 import anaydis.search.RandomizedTreeMap;

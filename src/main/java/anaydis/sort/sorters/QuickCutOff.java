@@ -31,12 +31,12 @@ public class QuickCutOff extends QuickSorter {
     public <T> void sort(@NotNull Comparator<T> comparator, @NotNull List<T> list, int left, int right) {
         if (right - left <= cutIndex) {
             insertionSorter.sort(comparator, list);
-            return;
         }
         if(right <= left) return;
         int i = partition(comparator, list, left, right);
         sort(comparator, list, left, i - 1);
         sort(comparator, list, i + 1, right);
+
 
     }
 

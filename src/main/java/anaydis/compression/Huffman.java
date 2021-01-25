@@ -1,5 +1,6 @@
 package anaydis.compression;
 
+import anaydis.immutable.BinaryTree;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -15,5 +16,9 @@ public class Huffman implements anaydis.compression.Compressor {
     @Override
     public void decode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
 
+    }
+
+    private BinaryTree<Integer, String> buildHuffmanTree(){
+        return null;
     }
 }

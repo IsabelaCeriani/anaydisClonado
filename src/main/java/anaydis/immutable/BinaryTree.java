@@ -64,22 +64,25 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
     @Override
     public Map<K, V> put(@NotNull K k, V v) {
         TreeResult<K, V> result = put(head, k, v);
-        return new BinaryTree<K, V>(comparator, result.getNode(), result.getSize());
+        return new BinaryTree<>(comparator, result.getNode(), result.getSize());
     }
 
     private TreeResult<K,V> put(DoubleNode<K, V> node, @NotNull K k, V v) {
-        if(node == null) return new TreeResult<>(new DoubleNode<>(k, v), size+1);
+        if(node == null) return new TreeResult<>(new DoubleNode<>(k, v), size + 1);
+
         int comp = comparator.compare(node.key, k);
 
         if(comp > 0){
             TreeResult<K, V> result = put(node.left, k, v);
-            DoubleNode<K, V> newNode = new DoubleNode<K, V>(k, v, result.getNode(), node.right);
-            return new TreeResult<>(newNode, result.getSize());
-        }if(comp == 0) return new TreeResult<>(new DoubleNode<>(k, v), size);
+            //DoubleNode<K, V> newNode = new DoubleNode<K, V>(node.key, node.elem, result.getNode(), node.right);
+            return new TreeResult<>(new DoubleNode<>(node.key, node.elem, result.getNode(), node.right), result.getSize());
+        }
+
+        if(comp == 0) return new TreeResult<>(new DoubleNode<>(k, v), size);
 
         final TreeResult<K, V> result = put(node.right, k, v);
-        DoubleNode<K, V> newNode = new DoubleNode<>(k, v, node.left, result.getNode());
-        return new TreeResult<>(newNode, result.getSize());
+        //DoubleNode<K, V> newNode = new DoubleNode<>(node.key, node.elem, node.left, result.getNode());
+        return new TreeResult<>(new DoubleNode<>(node.key, node.elem, node.left, result.getNode()), result.getSize());
 
     }
 
@@ -119,11 +122,11 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
 
     @Override
     public Iterator<K> keys() {
-        DynamicStack<DoubleNode<K,V>> stack = new DynamicStack();
+        DynamicStack<DoubleNode<K,V>> stack = new DynamicStack<>();
 
-        return new Iterator<K>() {
+        return new Iterator<>() {
 
-            DoubleNode<K,V> current = head;
+            DoubleNode<K, V> current = head;
 
             @Override
             public boolean hasNext() {
@@ -137,7 +140,7 @@ public class BinaryTree<K, V> implements anaydis.immutable.Map<K, V> {
                     stack.push(current);
                     current = current.left;
                 }
-                DoubleNode<K,V> aux = stack.pop();
+                DoubleNode<K, V> aux = stack.pop();
                 current = aux.right;
                 return aux.key;
             }

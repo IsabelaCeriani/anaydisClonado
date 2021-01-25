@@ -1,6 +1,8 @@
-package anaydis.sort.benchmarks;
+package anaydis.sort.benchmarks.sortersBenchmarks;
 
 import anaydis.sort.SorterType;
+import anaydis.sort.benchmarks.sortersBenchmarks.BenchResult;
+import anaydis.sort.benchmarks.sortersBenchmarks.DataArrangement;
 
 public class QuickCutOffBenchResult extends BenchResult {
 

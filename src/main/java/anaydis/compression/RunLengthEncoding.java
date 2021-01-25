@@ -11,26 +11,73 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
 
     @Override
     public void encode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
-        int data = input.read();
-        int count = 0 ;
-        while(data!= -1){
-            int i = data;
-            while(data == i){
+//        int position = input.read();
+//        char data = (char) position;
+//        int count = 0;
+//        while(position != -1){
+//            int i = data;
+//            while(data == (char)i){
+//                count++;
+//                position = input.read();
+//                i = position;
+//            }
+//
+//            if(count == 1){
+//                output.write(data);
+//
+//            }
+//            if (count >0){
+//            output.write(count);
+//            output.write(data);
+//
+//            position = input.read();
+//
+//
+//        }
+//
+//        }
+
+        int position = input.read();
+        while (position != -1) {
+            int count = 1;
+            int next = input.read();
+            while (next == position) {
                 count++;
-                i = input.read();
+                next = input.read();
             }
-            if(count != 1) output.write(data);
             output.write(count);
-            output.write(data);
-            count = 0;
-            data = input.read();
+            output.write(position);
+
+
         }
 
-
-
-
-
     }
+
+//    @Override
+//    public void encode(@NotNull InputStream inputStream, @NotNull OutputStream outputStream) throws IOException {
+//        char read = (char) inputStream.read();
+//        int counter = 0;
+//        char countingChar = read;
+//
+//        while(read != (char) -1){
+//            if(read == countingChar){
+//                counter++;
+//
+//            } else {
+//
+//                outputStream.write(counter);
+//                outputStream.write(countingChar);
+//                counter = 1;
+//                countingChar = read;
+//            }
+//            read = (char) inputStream.read();
+//        }
+//
+//        if (counter >0){
+//            outputStream.write(counter);
+//            outputStream.write(countingChar);
+//        }
+//    }
 
 
 
@@ -44,5 +91,10 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
             }
         }
 
-    }
+
+
+        }
+
+
+
 }

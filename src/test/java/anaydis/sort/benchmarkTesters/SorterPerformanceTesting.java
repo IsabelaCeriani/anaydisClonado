@@ -1,13 +1,14 @@
-package anaydis.sort;
+package anaydis.sort.benchmarkTesters;
 
-import anaydis.sort.benchmarks.BenchResult;
-import anaydis.sort.benchmarks.BenchResultsGenerator;
-import anaydis.sort.benchmarks.DataArrangement;
+import anaydis.sort.SorterType;
+import anaydis.sort.benchmarks.sortersBenchmarks.BenchResult;
+import anaydis.sort.benchmarks.sortersBenchmarks.BenchResultsGenerator;
+import anaydis.sort.benchmarks.sortersBenchmarks.DataArrangement;
 import anaydis.sort.gui.ObservableSorter;
 import anaydis.sort.listeners.OrderSorterListener;
 import anaydis.sort.sorters.SorterProviderClass;
 
-public class PerformanceTesting {
+public class SorterPerformanceTesting {
 
 
     public static void main(String[] args) {
@@ -37,14 +38,17 @@ public class PerformanceTesting {
 
 
         BenchResult mPerformance1 = benchResultsGenerator.createBenchResultForMPerformance(1000, DataArrangement.RANDOM, 20, 3);
-        BenchResult mPerformance2 = benchResultsGenerator.createBenchResultForMPerformance(10000, DataArrangement.RANDOM, 20, 3);
-        BenchResult mPerformance3 = benchResultsGenerator.createBenchResultForMPerformance(100000, DataArrangement.RANDOM, 20, 3);
-        BenchResult mPerformance4 = benchResultsGenerator.createBenchResultForMPerformance(1000000, DataArrangement.RANDOM, 20, 3);
+//        BenchResult mPerformance2 = benchResultsGenerator.createBenchResultForMPerformance(10000, DataArrangement.RANDOM, 20, 7);
+//        BenchResult mPerformance3 = benchResultsGenerator.createBenchResultForMPerformance(100000, DataArrangement.RANDOM, 20, 7);
+//        BenchResult mPerformance4 = benchResultsGenerator.createBenchResultForMPerformance(1000000, DataArrangement.RANDOM, 20, 7);
 
-        System.out.println("Bench result 1: \n" + mPerformance1.toString() + "\n\n" +
-                            "Bench result 2: \n" + mPerformance2 + "\n\n" +
-                            "Bench result 3: \n" + mPerformance3.toString() + "\n\n"+
-                            "Bench result 4: \n" + mPerformance4.toString());
+        System.out.println("Bench result 1: \n" + mPerformance1.toString()
+//                + "\n\n" +
+//                            "Bench result 2: \n" + mPerformance2 + "\n\n" +
+//                            "Bench result 3: \n" + mPerformance3.toString() + "\n\n"
+                        //+
+//                            "Bench result 4: \n" + mPerformance4.toString()
+        );
 
 
 

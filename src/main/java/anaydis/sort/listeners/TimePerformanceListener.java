@@ -49,19 +49,27 @@ public class TimePerformanceListener implements SorterListener {
 
     //return the average time taken for n amounts of runs. (in seconds)
     public double getTime(){
-        double average = 0;
+        double total = 0;
         double timesRunned = 0;
         for (Double time: timesCalculated) {
-            average+=time;
+            total+=time;
             timesRunned++;
         }
+        wipeData();
 
-        return average/timesRunned;
+        return (total/timesRunned);
     }
 
     //sets start time to 0
     public void reset(){
+
         startTime = 0;
+    }
+
+    //resets all data stored in the listener
+    public void wipeData(){
+        reset();
+        for(Double time : timesCalculated) time = null;
     }
 
     public double getStartTime() {

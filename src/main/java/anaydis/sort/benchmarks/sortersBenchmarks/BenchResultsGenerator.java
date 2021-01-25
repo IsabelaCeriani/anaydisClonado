@@ -1,4 +1,4 @@
-package anaydis.sort.benchmarks;
+package anaydis.sort.benchmarks.sortersBenchmarks;
 
 
 import anaydis.sort.sorters.SorterProviderClass;
@@ -22,7 +22,7 @@ public class BenchResultsGenerator {
     Comparator<Integer> integerComparator = integerDataSetGenerator.getComparator();
 
 
-    public  BenchResult createBenchResult(int nSize, DataArrangement dataArrangement, int timesExecuted, SorterType sorterType){
+    public BenchResult createBenchResult(int nSize, DataArrangement dataArrangement, int timesExecuted, SorterType sorterType){
         OrderSorterListener orderSorterListener = new OrderSorterListener();
         TimePerformanceListener timePerformanceListener = new TimePerformanceListener();
         final List<Integer> integers = integerDataSetGenerator.createRandom(nSize);
@@ -101,11 +101,12 @@ public class BenchResultsGenerator {
             timePerformanceListener.start();
             sorter.sort(integerComparator, integers);
             timePerformanceListener.setTime();
-            timePerformanceListener.reset();
+            //timePerformanceListener.reset();
             counter++;
         }
 
         double timePerformance = timePerformanceListener.getTime();
+        timePerformanceListener.wipeData();
 
         return new QuickCutOffBenchResult(nSize, timesExecuted, dataArrangement, 0, timePerformance, M);
     }

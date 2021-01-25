@@ -10,8 +10,7 @@ public class DoubleNode<T, V>{
     public DoubleNode(T key,V elem) {
         this.key =key;
         this.elem = elem;
-        left = null;
-        right = null;
+
     }
 
 
