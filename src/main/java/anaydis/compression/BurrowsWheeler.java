@@ -17,11 +17,10 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
 
             java.util.Arrays.sort(strs);
 
-            StringBuilder builder = new StringBuilder();
+
             for (int i = 0; i < strs.length; ++i) {
-                builder.append(strs[i].charAt(strs[i].length() - 1));
+                outputStream.write(strs[i].charAt(strs[i].length() - 1));
             }
-            builder.toString();
             str = br.readLine();
         }
     }
@@ -41,13 +40,11 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
             int startIndex = 0;
             for (; str.charAt(startIndex) != '$'; ++startIndex) ;
 
-            StringBuilder builder = new StringBuilder();
             for (int i = 0; i < indices.length - 1; ++i) {
                 startIndex = indices[startIndex];
                 char c = str.charAt(startIndex);
-                builder.append(c);
+                outputStream.write(c);
             }
-            builder.toString();
             str = br.readLine();
         }
     }
