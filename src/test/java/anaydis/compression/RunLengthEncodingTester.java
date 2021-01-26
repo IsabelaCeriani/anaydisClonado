@@ -26,6 +26,18 @@ public class RunLengthEncodingTester {
 
     @Test
     public void testEncode() throws IOException {
+
+        File file = new File("file.rtf");
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new FileOutputStream(file);
+        outputStream.write("A".getBytes());
+        outputStream.write("A".getBytes());
+        outputStream.write("A".getBytes());
+        outputStream.write("A".getBytes());
+        outputStream.write("B".getBytes());
+        outputStream.write("C".getBytes());
+        runLengthEncoding.encode(inputStream, outputStream);
+
 //
 //        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/RLE.txt");
 //        FileInputStream fis = new FileInputStream(file);

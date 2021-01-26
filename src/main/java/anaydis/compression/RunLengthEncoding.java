@@ -11,23 +11,18 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
     public void encode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(input));
         String str = br.readLine();
-        int counter = 0;
         while (str != null) {
-            int n = str.length();
-            for (int i = 0; i < n; i++) {
-
-                // Count occurrences of current character
+            for (int i = 0; i < str.length(); i++) {
                 int count = 1;
-                while (i < n - 1 &&
-                        str.charAt(i) == str.charAt(i + 1)) {
+                while (i + 1< str.length() && str.charAt(i) == str.charAt(i + 1)) {
                     count++;
                     i++;
                 }
                 output.write(count);
                 output.write(str.charAt(i));
-                str = br.readLine();
 
             }
+                str = br.readLine();
         }
         }
 
@@ -42,8 +37,8 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
                 for (int j = 0; j < count; j++) {
                     output.write(i);
                 }
-                str = br.readLine();
             }
+                str = br.readLine();
         }
 
         }
