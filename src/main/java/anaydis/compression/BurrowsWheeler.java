@@ -43,7 +43,7 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
                 char c = str.charAt(startIndex);
                 outputStream.write(c);
             }
-        
+
 
     }
 
