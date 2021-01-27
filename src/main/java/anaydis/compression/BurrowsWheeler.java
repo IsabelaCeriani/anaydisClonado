@@ -35,14 +35,11 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
             }
             java.util.Arrays.sort(indices, new BWComparator(str));
 
-            int startIndex = 0;
-            for (; str.charAt(startIndex) != '$'; ++startIndex) ;
-
-            for (int i = 0; i < indices.length - 1; ++i) {
-                startIndex = indices[startIndex];
-                char c = str.charAt(startIndex);
-                outputStream.write(c);
+            for (int i = 0; i < indices.length; ++i) {
+                if(str.charAt(i)!='$') outputStream.write(str.charAt(i));
             }
+
+
 
 
     }
