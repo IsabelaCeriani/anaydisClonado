@@ -9,7 +9,6 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
     public void encode(@NotNull InputStream inputStream, @NotNull OutputStream outputStream) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         String str = br.readLine();
-        while (str != null) {
             String[] strs = new String[str.length()];
             for (int i = 0; i < strs.length; ++i) {
                 strs[i] = str.substring(i) + str.substring(0, i);
@@ -21,8 +20,7 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
             for (int i = 0; i < strs.length; ++i) {
                 outputStream.write(strs[i].charAt(strs[i].length() - 1));
             }
-            str = br.readLine();
-        }
+
     }
 
 
@@ -30,7 +28,7 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
     public void decode(@NotNull InputStream inputStream, @NotNull OutputStream outputStream) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         String str = br.readLine();
-        while (str != null) {
+
             Integer[] indices = new Integer[str.length()];
             for (int i = 0; i < indices.length; ++i) {
                 indices[i] = i;
@@ -45,8 +43,8 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
                 char c = str.charAt(startIndex);
                 outputStream.write(c);
             }
-            str = br.readLine();
-        }
+        
+
     }
 
     private static final class BWComparator implements java.util.Comparator<Integer> {
