@@ -15,42 +15,71 @@ public class RunLengthEncodingTester {
     public void testEncode() throws IOException {
 
 
-//        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
-//        InputStream inputStream = new FileInputStream(file);
-//        OutputStream outputStream = new FileOutputStream(file);
-//        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-//        outputStream.write("AAABBC".getBytes());
-//
-//        RunLengthEncoding runLengthEncoding = new RunLengthEncoding();
-//        runLengthEncoding.encode(inputStream, outputStream);
-//
-//        StringBuilder stringBuilder = new StringBuilder();
-//        String str = br.readLine();
-//        Assert.assertEquals("3A2B1C", str);
+        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new FileOutputStream(file);
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        outputStream.write("AAABBC".getBytes());
+
+        RunLengthEncoding runLengthEncoding = new RunLengthEncoding();
+        runLengthEncoding.encode(inputStream, outputStream);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        String str = br.readLine();
+        Assert.assertEquals("3A2B1C", str);
 
 
     }
 
     @Test
     public void testDecode() throws IOException {
-//
-//        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
-//        InputStream inputStream = new FileInputStream(file);
-//        OutputStream outputStream = new FileOutputStream(file);
-//        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-//        outputStream.write("3A2B1C".getBytes());
-//        RunLengthEncoding runLengthEncoding = new RunLengthEncoding();
-//        runLengthEncoding.decode(inputStream, outputStream);
-//
-//        StringBuilder stringBuilder = new StringBuilder();
-//        String str = br.readLine();
-//        Assert.assertEquals("AAABBC", str);
-//
-//
-//    }
+
+        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new FileOutputStream(file);
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        outputStream.write("3A2B1C".getBytes());
+        RunLengthEncoding runLengthEncoding = new RunLengthEncoding();
+        runLengthEncoding.decode(inputStream, outputStream);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        String str = br.readLine();
+        Assert.assertEquals("AAABBC", str);
+
+
+    }
+
+
+
+    public static class Main{
+
+        public static void main(String[] args) throws IOException {
+
+
+            File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
+            InputStream inputStream = new FileInputStream(file);
+            OutputStream outputStream = new FileOutputStream(file);
+            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            outputStream.write(("Primera linea\n" +
+                    "segunda linea ").getBytes());
+
+
+            StringBuilder stringBuilder = new StringBuilder();
+            String str = br.readLine();
+            while(str!= null) {
+                System.out.println(str);
+                str = br.readLine();
+            }
+
+
+
+        }
+
+
+    }
 
 }
-}
+
 
 
 
