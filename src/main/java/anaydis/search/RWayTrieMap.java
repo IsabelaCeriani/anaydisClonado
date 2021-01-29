@@ -65,9 +65,10 @@ public class RWayTrieMap<T> implements Map<String, T> {
     private void keys(Node<T> node, String string, List<String> list){
         if(node == null) return;
 
-        if(node.elem != null)list.add(string);
+        string = (String)node.elem;
+        if(string != null)list.add(string);
         for (int i = 0; i < node.next.length; i++) {
-            keys(node.next[i], string+ i, list);
+            keys(node.next[i], string+i, list);
         }
     }
 
@@ -114,34 +115,7 @@ public class RWayTrieMap<T> implements Map<String, T> {
 
     }
 
-//    public Node<T> pon(Node<T> node, String key, T value, int level){
-//        if(node == null){
-//            node = new Node<>(value);
-//            if(level < key.length()) node.next[key.charAt(level)] = put(node.next[key.charAt(level)], key, value, level+1);
-//            prev = node.elem;
-//            node.elem = value;
-//            size++;
-//            return node;
-//        }
-//
-//        if(level < key.length()) node.next[key.charAt(level)] = put(node.next[key.charAt(level)], key, value, level+1);
-//        prev = node.elem;
-//        node.elem = value;
-//
-//        return node;
-//
-//    }
 
-    //ternary
-//    public void autocomplete(Node node, String prefix, int level){
-//        if(node == null) return;
-//        if(level < prefix.length()){
-//            int c = prefix.charAt(level);
-//            if(node.elem == c) autocomplete(node.m, prefix, level+1);
-//            if(node.elem < c) autocomplete(node.l, prefix, level);
-//        }
-//
-//    }
 
     protected Node<T> getRoot(){
         return this.root;

@@ -3,6 +3,9 @@ package anaydis.compression;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class RunLengthEncoding implements anaydis.compression.Compressor{
 
@@ -10,30 +13,39 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
     @Override
     public void encode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(input));
-        String line = br.readLine();
-        StringBuilder str = new StringBuilder();
+//        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(output));
+        String str = "";
+        PrintWriter pr = new PrintWriter(output);
 
-        //paso todo el archivo a un string
-
-        while(line!=null){
-            str.append(line);
-            line = br.readLine();
-        }
+        while ((str = br.readLine()) != null) {
             for (int i = 0; i < str.length(); i++) {
                 int count = 1;
-                while (i + 1< str.length() && str.charAt(i) == str.charAt(i + 1)) {
+                while (i + 1 < str.length() && str.charAt(i) == str.charAt(i + 1)) {
                     count++;
                     i++;
                 }
 
-//                if (count!= 1)
-                    output.write(Character.forDigit(count, 10));
-                output.write(str.charAt(i));
-//                if(count != 1) output.write(count);
+                pr.write(Character.forDigit(count, 10));
+                pr.write(str.charAt(i));
             }
 
+//            bw.newLine();
+//            String lineSeparator = System.getProperty("line.separator");
+//            pr.append(lineSeparator);
+//            pr.write("\n\r");
+            //pr.write(10);
 
         }
+//        PrintWriter pr = new PrintWriter(bw);
+
+        pr.flush();
+//
+
+
+
+
+    }
+
 
 
 
@@ -45,14 +57,10 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
         StringBuilder str = new StringBuilder();
 
         //paso todo el archivo a un string
-
         while(line!=null){
             str.append(line);
             line = br.readLine();
         }
-
-
-
 
             for (int i = 0; i < str.length(); i+=2) {
                 int count = Character.getNumericValue(str.charAt(i));

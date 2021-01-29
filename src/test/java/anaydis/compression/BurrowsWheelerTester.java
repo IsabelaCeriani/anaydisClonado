@@ -12,7 +12,7 @@ public class BurrowsWheelerTester {
 
     @Test
     public void testEncode() throws IOException {
-//
+
 //        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
 //        InputStream inputStream = new FileInputStream(file);
 //        OutputStream outputStream = new FileOutputStream(file);

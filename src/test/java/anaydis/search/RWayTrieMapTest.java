@@ -64,6 +64,13 @@ public class RWayTrieMapTest extends RWayTrieMap<String> {
 
     @Test
     public void testKeys() {
+        tree.put("a", "a");
+        tree.put("b", "a");
+        tree.put("c", "a");
+        tree.put("d", "a");
+
+        tree.keys().forEachRemaining(s -> Assert.assertEquals("a", s));
+
 
     }
 
@@ -100,6 +107,8 @@ public class RWayTrieMapTest extends RWayTrieMap<String> {
 
         Assert.assertEquals(1, tree.size());
         Assert.assertTrue(tree.containsKey("a"));
+        String prev= tree.put("a", "b");
+        Assert.assertEquals("a", prev);
     }
 
     @Test
@@ -132,5 +141,7 @@ public class RWayTrieMapTest extends RWayTrieMap<String> {
         Assert.assertEquals("b", tree.getRoot().elem);
 
     }
+
+
 
 }
