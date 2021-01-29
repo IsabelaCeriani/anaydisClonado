@@ -65,10 +65,9 @@ public class RWayTrieMap<T> implements Map<String, T> {
     private void keys(Node<T> node, String string, List<String> list){
         if(node == null) return;
 
-        string = (String)node.elem;
-        if(string != null)list.add(string);
+        if(node.elem != null)list.add(string);
         for (int i = 0; i < node.next.length; i++) {
-            keys(node.next[i], string+i, list);
+            keys(node.next[i], string+node.elem, list);
         }
     }
 
