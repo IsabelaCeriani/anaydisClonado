@@ -1,60 +1,99 @@
 package anaydis.compression;
 
-import anaydis.immutable.BinaryTree;
+import org.apache.commons.collections4.BidiMap;
+import org.apache.commons.collections4.bidimap.TreeBidiMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.Bidi;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class Huffman implements anaydis.compression.Compressor {
+
+    //la key es el caracter y el value es el codigo en forma de String
+    BidiMap<Character, String> codes = new TreeBidiMap<>();
+    HuffmanTree tree;
+
     @Override
     public void encode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
-//        char[] chars = eliminateRepetitions();
-//        int[] frequencies = getFrequences();
-//        HuffmanTree huffmanTree = buildTree(frequencies, chars);
+        BufferedReader br = new BufferedReader(new InputStreamReader(input));
+        String line = br.readLine();
+        String str = "";
+
+        //paso todo el archivo a un string
+        while(line!=null){
+            str+=line;
+            line = br.readLine();
+        }
+        
+
+        //creo un arreglo con todos los chars del string (sin repeticion)
+        char[] charsUnrepeated = eliminateRepetitions(str.toCharArray());
+        //creo un arreglo con la frecuencia de cada char en su lugar correspondiente
+        int[] frequencies = getFrequences(str, charsUnrepeated);
+
+
+        // creo el arbol
+        this.tree  =  buildTree(frequencies, charsUnrepeated);
+
+
+        //guardo en un mapa todos los caracteres con su codigo
+        getCodeMap(tree, new StringBuffer());
+
+        //escribo en el ouput el mensaje codificado
+        for (Character aChar: str.toCharArray()) {
+            output.write(codes.get(aChar).getBytes());
+        }
+
+
 
     }
 
     @Override
     public void decode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(input));
+        String line = br.readLine();
+        String str = "";
+
+        //paso todo el archivo a un string
+        while(line!=null){
+            str+=line;
+            line = br.readLine();
+        }
+
+        String code = "";
+        for (int i = 0; i < str.length(); i++) {
+            code+=str.charAt(i);
+            if(codes.containsValue(code)){
+                output.write(codes.getKey(code));
+                code = "";
+            }
+
+        }
 
     }
 
-    private BinaryTree<Integer, String> buildHuffmanTree(){
-        return null;
-    }
+
 
 
     //cuenta la cantidad de ocurrencias de un char en un String
-    //(contar letras)
     public static int calculateOccurrences(String str, char charater) {
-        int index;
-        int count = 0;
-
-        index = str.indexOf(charater);
-
-        while (index != -1) {
-            count++;
-            index = str.indexOf(str, index + 1);
-        }
+        int count = (int) str.chars().filter(ch -> ch == charater).count();
         return count;
     }
 
     //obtiene las frecuencias de cada caracter en un string
-    // (obtener frecuencias)
     public static int[] getFrequences(String str, char[] characters) {
-        int[] frecuencias = new int[characters.length];
+        int[] frequencies = new int[characters.length];
 
         for (int i = 0; i < characters.length; i++) {
-            frecuencias[i] = calculateOccurrences(str, characters[i]);
+            frequencies[i] = calculateOccurrences(str, characters[i]);
         }
-        return frecuencias;
+        return frequencies;
     }
 
     //elimina caracteres repetidos en un String
-    //obtener letras unicas
     public static char[] eliminateRepetitions(char[] chars) {
         String str = "";
 
@@ -64,43 +103,15 @@ public class Huffman implements anaydis.compression.Compressor {
         return str.toCharArray();
     }
 
-//
-//    public static String toPrint(HuffmanNode root, String s, String print) {
-//        if (root.left == null && root.right == null && Character.isLetter(root.aChar)) {
-//
-//            print += root.aChar + ":" + s + "\n";
-//            return print;
-//        }
-//
-//        // Va recursivamente por los hijos del arbol.
-//        print = toPrint(root.left, s + "0", print);
-//        print = toPrint(root.right, s + "1", print);
-//        return print;
-//    }
-
-    // Lee el archivo de texto y entrega una lista.
-    public static List readData(InputStream input) throws FileNotFoundException, IOException {
-        List<String> list = new ArrayList<String>();
-
-        String str = null;
-        BufferedReader br = new BufferedReader(new InputStreamReader(input));
-
-        while ((str = br.readLine()) != null) {
-            list.add(str);
-        }
-
-        return list;
-
-    }
 
     // input is an array of frequencies, indexed by character code
-    public static HuffmanTree buildTree(int[] frequencies, char[] chars) {
+    public static HuffmanTree buildTree(int[] charFreqs, char[] test2) {
         PriorityQueue<HuffmanTree> trees = new PriorityQueue<HuffmanTree>();
         // initially, we have a forest of leaves
         // one for each non-empty character
-        for (int i = 0; i < frequencies.length; i++)
-            if (frequencies[i] > 0)
-                trees.offer(new HuffmanLeaf(chars[i], frequencies[i]));
+        for (int i = 0; i < charFreqs.length; i++)
+            if (charFreqs[i] > 0)
+                trees.offer(new HuffmanLeaf(test2[i], charFreqs[i]));
 
         assert trees.size() > 0;
         // loop until there is only one tree left
@@ -116,8 +127,43 @@ public class Huffman implements anaydis.compression.Compressor {
     }
 
 
+    public void getCodeMap(HuffmanTree tree, StringBuffer prefix) {
+        assert tree != null;
+        if (tree instanceof HuffmanLeaf) {
+            HuffmanLeaf leaf = (HuffmanLeaf) tree;
+
+            // print out character, frequency, and code for this leaf (which is just the prefix)
+//            System.out.println(leaf.value + "\t" + leaf.frequency + "\t" + prefix);
+            codes.put(leaf.value, prefix.toString());
+
+
+
+
+
+        } else if (tree instanceof HuffmanNode) {
+            HuffmanNode node = (HuffmanNode) tree;
+
+            // traverse left
+            prefix.append('0');
+            getCodeMap(node.left, prefix);
+            prefix.deleteCharAt(prefix.length() - 1);
+
+            // traverse right
+            prefix.append('1');
+            getCodeMap(node.right, prefix);
+            prefix.deleteCharAt(prefix.length() - 1);
+        }
+    }
+
 
 
 }
+
+
+
+
+
+
+
 
 

@@ -12,14 +12,14 @@ public class HuffmanTester {
 
     @Test
     public void testEncode() throws IOException {
-//
+
 //        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
 //        InputStream inputStream = new FileInputStream(file);
 //        OutputStream outputStream = new FileOutputStream(file);
 //        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 //
 //
-//        outputStream.write("AAAABBC".getBytes());
+//        outputStream.write("AAAAAAAAAAABBBBBBBC".getBytes());
 //
 //        huffman.encode(inputStream, outputStream);
 //
@@ -27,29 +27,31 @@ public class HuffmanTester {
 //        String str = br.readLine();
 //        System.out.println(str);
 
-//        Assert.assertEquals("OBRSDDB5", str);
 
 
     }
 
     @Test
     public void testDecode() throws IOException {
-//
+
 //        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
 //        InputStream inputStream = new FileInputStream(file);
 //        OutputStream outputStream = new FileOutputStream(file);
 //        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 //
+//        outputStream.write("AAAAAAAAAAABBBBBBBC".getBytes());
 //
-////        outputStream.write("OBRSDDB5".getBytes());
+//        huffman.encode(inputStream, outputStream);
+//
+//
 //
 //        huffman.decode(inputStream, outputStream);
 //
-//        StringBuilder stringBuilder = new StringBuilder();
+//
 //        String str = br.readLine();
 //        System.out.println(str);
+//
 
-//        Assert.assertEquals("AAAABBC", str);
 
 
 

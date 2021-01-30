@@ -61,20 +61,22 @@ public class RWayTrieMap<T> implements Map<String, T> {
         keys(root, "", list);
         return list.iterator();
     }
-
+//
     private void keys(Node<T> node, String string, List<String> list){
         if(node == null) return;
 
         if(node.elem != null)list.add(string);
         for (int i = 0; i < node.next.length; i++) {
-            keys(node.next[i], string+node.elem, list);
+            keys(node.next[i], string+Character.toString((char)i), list);
         }
     }
 
 
 
 
-     protected Node<T> find(Node<T> node, String word, int level)  {
+
+
+    protected Node<T> find(Node<T> node, String word, int level)  {
         if (node == null) return null;
 
         if (level == word.length()) return node;

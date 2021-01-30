@@ -68,15 +68,16 @@ public class RWayTrieMapTest extends RWayTrieMap<String> {
         tree.put("b", "a");
         tree.put("c", "a");
         tree.put("d", "a");
-
-        tree.keys().forEachRemaining(System.out::println);
+//
+//        tree.keys().forEachRemaining(System.out::println);
 //        tree.keys().forEachRemaining(s -> Assert.assertEquals("a", s));
 
 
         RWayTrieMap<Integer> treeI = new RWayTrieMap<>();
-        treeI.put("a", 1);
-        treeI.put("b", 1);
-        treeI.put("c", 1);
+        treeI.put("aaaa", 1);
+        treeI.put("bbb", 2);
+        treeI.put("cc", 3);
+        treeI.put("dd", 4);
 
         treeI.keys().forEachRemaining(System.out::println);
 //        treeI.keys().forEachRemaining(s -> Assert.assertEquals(1, s));
@@ -153,6 +154,7 @@ public class RWayTrieMapTest extends RWayTrieMap<String> {
         Assert.assertEquals("b", tree.getRoot().elem);
 
     }
+
 
 
 
