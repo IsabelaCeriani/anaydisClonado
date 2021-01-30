@@ -5,8 +5,6 @@ import org.apache.commons.collections4.bidimap.TreeBidiMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
-import java.text.Bidi;
-import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class Huffman implements anaydis.compression.Compressor {
@@ -106,7 +104,7 @@ public class Huffman implements anaydis.compression.Compressor {
 
     // input is an array of frequencies, indexed by character code
     public static HuffmanTree buildTree(int[] charFreqs, char[] test2) {
-        PriorityQueue<HuffmanTree> trees = new PriorityQueue<HuffmanTree>();
+        PriorityQueue<HuffmanTree> trees = new PriorityQueue<>();
         // initially, we have a forest of leaves
         // one for each non-empty character
         for (int i = 0; i < charFreqs.length; i++)
