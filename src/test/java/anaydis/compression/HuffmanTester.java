@@ -13,45 +13,46 @@ public class HuffmanTester {
     @Test
     public void testEncode() throws IOException {
 
-//        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
-//        InputStream inputStream = new FileInputStream(file);
-//        OutputStream outputStream = new FileOutputStream(file);
-//        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-//
-//
-//        outputStream.write("AAAAAAAAAAABBBBBBBC".getBytes());
-//
-//        huffman.encode(inputStream, outputStream);
-//
-//        StringBuilder stringBuilder = new StringBuilder();
-//        String str = br.readLine();
-//        System.out.println(str);
-//
+
+        String str = "AAAAAAAAAAABBBBBBBC";
+        InputStream is = new ByteArrayInputStream(str.getBytes());
+        OutputStream os = new ByteArrayOutputStream();
+
+
+
+        huffman.encode(is, os);
+
+        String result = os.toString();
+        Assert.assertEquals("111111111110101010101010100", result);
 
 
     }
 
     @Test
     public void testDecode() throws IOException {
+        String str = "AAAAAAAAAAABBBBBBBC";
+        InputStream is = new ByteArrayInputStream(str.getBytes());
+        OutputStream os = new ByteArrayOutputStream();
 
-//        File file = new File("/Users/isabelaceriani/Documents/Projects/Anaydis/anaydis-iceriani/Untitled.rtf");
-//        InputStream inputStream = new FileInputStream(file);
-//        OutputStream outputStream = new FileOutputStream(file);
-//        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-//
-//        outputStream.write("AAAAAAAAAAABBBBBBBC".getBytes());
-//
-//        huffman.encode(inputStream, outputStream);
-//
-//
-//
-//        huffman.decode(inputStream, outputStream);
-//
-//
-//        String str = br.readLine();
-//        System.out.println(str);
-//
-//
+
+
+        huffman.encode(is, os);
+
+        String result = os.toString();
+        System.out.println(result);
+
+
+        InputStream newInputStream = new ByteArrayInputStream(os.toString().getBytes());
+        OutputStream newOS = new ByteArrayOutputStream();
+
+
+        huffman.decode(newInputStream, newOS);
+
+
+        result = newOS.toString();
+        System.out.println(result);
+
+
 
 
 
