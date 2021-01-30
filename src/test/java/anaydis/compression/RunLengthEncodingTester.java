@@ -10,8 +10,8 @@ import java.lang.instrument.Instrumentation;
 public class RunLengthEncodingTester {
 
 
-        RunLengthEncoding runLengthEncoding = new RunLengthEncoding();
-        String encodedInput;
+//        RunLengthEncoding runLengthEncoding = new RunLengthEncoding();
+//        String encodedInput;
 
         @Test
         public void testEncode() throws IOException {
