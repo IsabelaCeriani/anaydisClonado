@@ -8,7 +8,7 @@ public class QuickCutOffBenchResult extends BenchResult {
 
     int M;
     public QuickCutOffBenchResult(int nSize, int timesExecuted, DataArrangement dataArrangement, int orderPerformance, double timePerformance, int M) {
-        super(nSize, timesExecuted, dataArrangement, SorterType.SHELL, orderPerformance, timePerformance);
+        super(nSize, timesExecuted, dataArrangement, SorterType.QUICK_CUT, orderPerformance, timePerformance);
         this.M = M;
     }
 

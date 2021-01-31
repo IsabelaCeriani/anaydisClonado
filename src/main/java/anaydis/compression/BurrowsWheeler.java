@@ -59,7 +59,7 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
         int firstCharPosition = Character.getNumericValue(str.charAt(str.length()-1));
         str.deleteCharAt(str.length()-1);
 
-        String string = (String) str.toString();
+        String string = str.toString();
 
 
 

@@ -15,14 +15,14 @@ public class HuffmanTester {
 
 
         String str = "AAAAAAAAAAABBBBBBBC";
-        InputStream is = new ByteArrayInputStream(str.getBytes());
-        OutputStream os = new ByteArrayOutputStream();
+        InputStream inputStream = new ByteArrayInputStream(str.getBytes());
+        OutputStream outputStream = new ByteArrayOutputStream();
 
 
 
-        huffman.encode(is, os);
+        huffman.encode(inputStream, outputStream);
 
-        String result = os.toString();
+        String result = outputStream.toString();
         Assert.assertEquals("111111111110101010101010100", result);
 
 
@@ -31,26 +31,23 @@ public class HuffmanTester {
     @Test
     public void testDecode() throws IOException {
         String str = "AAAAAAAAAAABBBBBBBC";
-        InputStream is = new ByteArrayInputStream(str.getBytes());
-        OutputStream os = new ByteArrayOutputStream();
+        InputStream inputStream = new ByteArrayInputStream(str.getBytes());
+        OutputStream outputStream = new ByteArrayOutputStream();
 
 
 
-        huffman.encode(is, os);
+        huffman.encode(inputStream, outputStream);
 
-        String result = os.toString();
-        System.out.println(result);
+        String result = outputStream.toString();
 
-
-        InputStream newInputStream = new ByteArrayInputStream(os.toString().getBytes());
-        OutputStream newOS = new ByteArrayOutputStream();
+        InputStream newInputStream = new ByteArrayInputStream(outputStream.toString().getBytes());
+        OutputStream newoutputStream = new ByteArrayOutputStream();
 
 
-        huffman.decode(newInputStream, newOS);
+        huffman.decode(newInputStream, newoutputStream);
 
 
-        result = newOS.toString();
-        System.out.println(result);
+        result = newoutputStream.toString();
 
 
 

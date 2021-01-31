@@ -37,7 +37,7 @@ public class SorterPerformanceTesting {
 //
 
 
-        BenchResult mPerformance1 = benchResultsGenerator.createBenchResultForMPerformance(1000, DataArrangement.RANDOM, 20, 3);
+        BenchResult mPerformance1 = benchResultsGenerator.createBenchResultForMPerformance(1000000, DataArrangement.RANDOM, 2, 3);
 //        BenchResult mPerformance2 = benchResultsGenerator.createBenchResultForMPerformance(10000, DataArrangement.RANDOM, 20, 7);
 //        BenchResult mPerformance3 = benchResultsGenerator.createBenchResultForMPerformance(100000, DataArrangement.RANDOM, 20, 7);
 //        BenchResult mPerformance4 = benchResultsGenerator.createBenchResultForMPerformance(1000000, DataArrangement.RANDOM, 20, 7);

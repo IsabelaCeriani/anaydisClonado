@@ -13,15 +13,15 @@ public class MapGenerator {
 
 
     private File file;
-    private Map map;
+    private Map<String, Integer> ocurrencesMap;
 
     public MapGenerator(Map map, String file){
-        this.map = map;
+        this.ocurrencesMap = map;
         this.file = new File(file);
     }
 
     public void getOcurrencesMap() throws FileNotFoundException {
-        if(map.isEmpty()) fillOccurrencesMap(map);
+        if(ocurrencesMap.isEmpty()) fillOccurrencesMap(ocurrencesMap);
     }
 
     private void fillOccurrencesMap(Map<String, Integer> ocurrencesMap) throws FileNotFoundException {
@@ -42,17 +42,20 @@ public class MapGenerator {
         if(searchMap.isEmpty()) fillSearchMap(searchMap);
     }
 
-    private void fillSearchMap(Map<String, Integer> ocurrencesMap) throws FileNotFoundException {
+    private void fillSearchMap(Map<String, Integer> reversedMap) throws FileNotFoundException {
         for (Iterator<String> it = ocurrencesMap.keys(); it.hasNext(); ) {
             String word = it.next();
-            reverseString(word);
-
+            reversedMap.put(word, ocurrencesMap.get(it.next()));
         }
 
     }
 
     private void reverseString(String word){
-
+        String reversed = "";
+        for (int i = word.length()-1; i >= 0; i--) {
+                reversed+=word.charAt(i);
+        }
+        word=reversed;
     }
 
 

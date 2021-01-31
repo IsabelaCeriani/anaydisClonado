@@ -3,9 +3,6 @@ package anaydis.compression;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class RunLengthEncoding implements anaydis.compression.Compressor{
 
