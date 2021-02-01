@@ -33,7 +33,7 @@ public class BurrowsWheelerTester {
 //
 
 
-        String str = "OBRSDDB5";
+        String str = "HOLACOMOESTAS";
         InputStream inputStream = new ByteArrayInputStream(str.getBytes());
         OutputStream outputStream = new ByteArrayOutputStream();
 
@@ -42,7 +42,8 @@ public class BurrowsWheelerTester {
 
         String result = outputStream.toString();
 
-        Assert.assertEquals("DRDOBBS", result);
+        System.out.println(result);
+//        Assert.assertEquals("DRDOBBS", result);
 
 
 

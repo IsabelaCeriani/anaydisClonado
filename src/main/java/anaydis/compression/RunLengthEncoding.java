@@ -27,39 +27,23 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
             }
             pr.println();
 
-//            bw.newLine();
-//            String lineSeparator = System.getProperty("line.separator");
-//            pr.append(lineSeparator);
-//            pr.write("\n\r");
-            //pr.write(10);
 
         }
-//        PrintWriter pr = new PrintWriter(bw);
-
         pr.flush();
-//
+
 
 
 
 
     }
 
-
-
-
-
     @Override
     public void decode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(input));
-        String line = br.readLine();
-        StringBuilder str = new StringBuilder();
+        String str = "";
+        PrintWriter pr = new PrintWriter(output);
 
-        //paso todo el archivo a un string
-        while(line!=null){
-            str.append(line);
-            line = br.readLine();
-        }
-
+        while ((str = br.readLine()) != null) {
             for (int i = 0; i < str.length(); i+=2) {
                 int count = Character.getNumericValue(str.charAt(i));
                 int j = 0;
@@ -71,9 +55,15 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
 
 
             }
-
-
+            pr.println();
         }
+
+        pr.flush();
+//
+
+
+
+    }
 
 
 

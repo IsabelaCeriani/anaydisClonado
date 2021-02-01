@@ -46,7 +46,9 @@ public class RunLengthEncodingTester {
 
                 String result = outputStream.toString();
 
-                Assert.assertEquals("AAABBC", result);
+//                System.out.println(result);
+
+                Assert.assertEquals("AAABBC\n", result);
 
 
 
