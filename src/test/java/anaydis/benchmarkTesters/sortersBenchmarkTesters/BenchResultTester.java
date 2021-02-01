@@ -1,8 +1,8 @@
-package anaydis.sort.benchmarkTesters;
+package anaydis.benchmarkTesters.sortersBenchmarkTesters;
 
 import anaydis.sort.SorterType;
-import anaydis.sort.benchmarks.sortersBenchmarks.BenchResult;
-import anaydis.sort.benchmarks.sortersBenchmarks.DataArrangement;
+import anaydis.benchmarks.sortersBenchmarks.BenchResult;
+import anaydis.benchmarks.sortersBenchmarks.DataArrangement;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
 

@@ -25,6 +25,7 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
                 pr.write(Character.forDigit(count, 10));
                 pr.write(str.charAt(i));
             }
+            pr.println();
 
 //            bw.newLine();
 //            String lineSeparator = System.getProperty("line.separator");

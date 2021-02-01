@@ -1,11 +1,12 @@
-package anaydis.sort.benchmarks.mapBenchmarks;
+package anaydis.benchmarks.mapBenchmarks;
 
 import anaydis.search.Map;
-import anaydis.sort.dataSetGenerators.StringDataSetGenerator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class MapGenerator {
@@ -20,8 +21,9 @@ public class MapGenerator {
         this.file = new File(file);
     }
 
-    public void getOcurrencesMap() throws FileNotFoundException {
+    public Map<String, Integer>  getOcurrencesMap() throws FileNotFoundException {
         if(ocurrencesMap.isEmpty()) fillOccurrencesMap(ocurrencesMap);
+        return ocurrencesMap;
     }
 
     private void fillOccurrencesMap(Map<String, Integer> ocurrencesMap) throws FileNotFoundException {
@@ -38,14 +40,19 @@ public class MapGenerator {
         txt.close();
 
     }
-    public void getSearchMap(Map<String, Integer> searchMap) throws FileNotFoundException {
-        if(searchMap.isEmpty()) fillSearchMap(searchMap);
+    public List<String> getReversedList(int mapSize) throws FileNotFoundException {
+        List<String> reversedKeys = new ArrayList<>();
+        if(!ocurrencesMap.isEmpty()) fillReversedList(reversedKeys, mapSize);
+        return reversedKeys;
     }
 
-    private void fillSearchMap(Map<String, Integer> reversedMap) throws FileNotFoundException {
+    private void fillReversedList(List<String> list, int mapSize) throws FileNotFoundException {
+        for (int i = 0; i < mapSize; i++) {
         for (Iterator<String> it = ocurrencesMap.keys(); it.hasNext(); ) {
             String word = it.next();
-            reversedMap.put(word, ocurrencesMap.get(it.next()));
+            reverseString(word);
+            list.add(word);
+        }
         }
 
     }

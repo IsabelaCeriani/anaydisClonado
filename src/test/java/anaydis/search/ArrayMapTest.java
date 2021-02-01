@@ -64,6 +64,10 @@ public class ArrayMapTest<Integer, String>  {
         map.put(1, (String) "A");
         map.put(2, (String) "B");
         map.put(3, (String) "C");
+        map.put(6, (String) "f");
+        map.put(5, (String)"d");
+        map.put(8, (String) "c");
+
 
         Assert.assertTrue(map.containsKeyt(1));
         Assert.assertTrue(map.containsKeyt(2));
@@ -74,7 +78,7 @@ public class ArrayMapTest<Integer, String>  {
         Assert.assertTrue(map.containsValueT((String) "B"));
         Assert.assertTrue(map.containsValueT((String) "C"));
 
-        //pruebo que sobreescriva una key que ya esta en la lista con un nuevo valor
+        //pruebo que sobreescriba una key que ya esta en la lista con un nuevo valor
         map.put(2, (String) "Nuevo");
         Assert.assertTrue(map.containsValueT((String) "Nuevo"));
         Assert.assertTrue(!map.containsValueT((String) "B"));
@@ -84,7 +88,9 @@ public class ArrayMapTest<Integer, String>  {
         int indexOfTwo = map.indexOf(2);
         int indexOfThree = map.indexOf(3);
 
-        map.getKeys().forEach(System.out::println);
+        map.put(8, (String) "c");
+        map.put(5, (String)"d");
+//        map.getKeys().forEach(System.out::println);
 
         Assert.assertEquals(0, indexOfOne);
         Assert.assertEquals(1, indexOfTwo);

@@ -1,4 +1,4 @@
-package anaydis.sort.benchmarks.sortersBenchmarks;
+package anaydis.benchmarks.sortersBenchmarks;
 
 
 import anaydis.sort.sorters.SorterProviderClass;
@@ -101,7 +101,7 @@ public class BenchResultsGenerator {
             timePerformanceListener.start();
             sorter.sort(integerComparator, integers);
             timePerformanceListener.setTime();
-            //timePerformanceListener.reset();
+            timePerformanceListener.reset();
             counter++;
         }
 

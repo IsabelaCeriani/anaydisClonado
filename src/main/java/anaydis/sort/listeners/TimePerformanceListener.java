@@ -3,12 +3,14 @@ package anaydis.sort.listeners;
 import anaydis.sort.gui.SorterListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class TimePerformanceListener implements SorterListener {
 
     private double startTime;
-    private List<Double> timesCalculated = new ArrayList<>();
+    private Set<Double> timesCalculated = new HashSet<Double>();
 
 
     @Override

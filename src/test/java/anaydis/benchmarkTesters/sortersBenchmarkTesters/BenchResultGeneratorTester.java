@@ -1,6 +1,6 @@
-package anaydis.sort.benchmarkTesters;
+package anaydis.benchmarkTesters.sortersBenchmarkTesters;
 
-import anaydis.sort.benchmarks.sortersBenchmarks.*;
+import anaydis.benchmarks.sortersBenchmarks.*;
 import anaydis.sort.gui.ObservableSorter;
 import anaydis.sort.listeners.OrderSorterListener;
 import anaydis.sort.listeners.TimePerformanceListener;

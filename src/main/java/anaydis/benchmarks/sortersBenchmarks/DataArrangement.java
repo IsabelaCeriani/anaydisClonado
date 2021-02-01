@@ -1,4 +1,4 @@
-package anaydis.sort.benchmarks.sortersBenchmarks;
+package anaydis.benchmarks.sortersBenchmarks;
 
 public enum DataArrangement {
 

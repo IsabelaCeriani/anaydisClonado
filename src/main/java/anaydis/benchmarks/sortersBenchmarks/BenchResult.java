@@ -1,4 +1,4 @@
-package anaydis.sort.benchmarks.sortersBenchmarks;
+package anaydis.benchmarks.sortersBenchmarks;
 
 import anaydis.sort.SorterType;
 

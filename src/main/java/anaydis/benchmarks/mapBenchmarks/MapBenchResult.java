@@ -1,4 +1,4 @@
-package anaydis.sort.benchmarks.mapBenchmarks;
+package anaydis.benchmarks.mapBenchmarks;
 
 public class MapBenchResult {
 
