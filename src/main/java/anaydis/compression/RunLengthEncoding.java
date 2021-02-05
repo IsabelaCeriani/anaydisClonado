@@ -10,7 +10,6 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
     @Override
     public void encode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(input));
-//        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(output));
         String str = "";
         PrintWriter pr = new PrintWriter(output);
 

@@ -71,6 +71,7 @@ public class BenchResultsGenerator {
             orderPerformance[counter] = orderSorterListener.getOrder();
             timePerformanceListener.setTime();
             timePerformanceListener.reset();
+            orderSorterListener.reset();
             counter++;
         }
 
@@ -107,6 +108,9 @@ public class BenchResultsGenerator {
 
         double timePerformance = timePerformanceListener.getTime();
         timePerformanceListener.wipeData();
+
+
+        sorter.removeSorterListener(timePerformanceListener);
 
         return new QuickCutOffBenchResult(nSize, timesExecuted, dataArrangement, 0, timePerformance, M);
     }

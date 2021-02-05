@@ -13,9 +13,5 @@ public class BenchResultTester {
 //    (int dataSize, int timesExecuted, DataArrangement dataArrangement, SorterType sorterType, int orderPerformance, double timePerformance)
     BenchResult benchResult = new BenchResult(10, 1, DataArrangement.RANDOM, SorterType.QUICK_CUT, 3, 3);
 
-    @Test
-    public void testCalculateAverage(){
-        int average = benchResult.calculateAverage(ints);
-        assertThat(average).isEqualTo(5);
-    }
+
 }

@@ -29,13 +29,13 @@ public class BenchResult {
                 + "Time= " + timePerformance;
     }
 
-    public int calculateAverage(int [] results){
-        int average = 0;
-        for (int result: results) {
-            average+= result;
-        }
-        return average/results.length;
-    }
+//    public int calculateAverage(int [] results){
+//        int average = 0;
+//        for (int result: results) {
+//            average+= result;
+//        }
+//        return average/results.length;
+//    }
 
 
 }

@@ -44,4 +44,9 @@ public class OrderSorterListener implements SorterListener {
     public int getSwaps() {
         return swaps;
     }
+
+    public void reset(){
+        greaters=0;
+        swaps = 0;
+    }
 }
