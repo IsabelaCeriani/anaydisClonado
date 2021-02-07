@@ -55,6 +55,7 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
         byte[] indexBytes = new byte[4];
         inputStream.read(indexBytes);
         int  firstCharPosition = ByteBuffer.wrap(indexBytes).getInt();
+        System.out.println(firstCharPosition);
 
 
 
@@ -65,14 +66,15 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
 
             //creo un array de integer(vector de transformacion)
             Integer[] indexes = new Integer[sorted.length];
-            for (int i = 0; i < indexes.length; i++) {
-                indexes[i] = i;
-            }
+//            for (int i = 0; i < indexes.length; i++) {
+//                indexes[i] = i;
+//            }
+
 
 
             //ordeno el vector de transformacion
             for (int i = 0; i < str.length(); i++) {
-                for (int j = 0; j < sorted.length; j++) {
+                for (int j = 0; j < str.length(); j++) {
                     if (str.charAt(i) == sorted[j]) {
                         indexes[j] = i;
                         sorted[j] = 'å';

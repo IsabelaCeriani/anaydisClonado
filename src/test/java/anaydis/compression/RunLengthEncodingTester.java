@@ -17,6 +17,7 @@ public class RunLengthEncodingTester {
         public void testEncode() throws IOException {
 
                 String str = "97, 97, 97, 97, 97, 97, 97, 97, 97, 32, 97, 109, 97, 115, 97, 32, 97, 109, 97, 115, 97, 32, 97, 109, 97, 115, 97";
+                String shortString = "AAABBC";
                 InputStream inputStream = new ByteArrayInputStream(str.getBytes());
                 OutputStream outputStream = new ByteArrayOutputStream();
 
@@ -36,8 +37,8 @@ public class RunLengthEncodingTester {
         public void testDecode() throws IOException {
 
 
-                String str = "19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 1917";
-                InputStream inputStream = new ByteArrayInputStream(str.getBytes());
+                String shortString = "19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 1917";
+                InputStream inputStream = new ByteArrayInputStream(shortString.getBytes());
                 OutputStream outputStream = new ByteArrayOutputStream();
 
 //
