@@ -25,7 +25,7 @@ public class BurrowsWheelerTester {
         String result = outputStream.toString();
 
         System.out.println(result);
-
+//
 //        Assert.assertEquals("OBRSDDB\n", result);
 
     }

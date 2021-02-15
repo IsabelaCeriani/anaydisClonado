@@ -16,34 +16,32 @@ public class Huffman implements anaydis.compression.Compressor {
     @Override
     public void encode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(input));
-        String line = br.readLine();
         String str = "";
+        PrintWriter pr = new PrintWriter(output);
 
-        //paso todo el archivo a un string
-        while(line!=null){
-            str+=line;
-            line = br.readLine();
+        while ((str = br.readLine()) != null) {
+
+            //creo un arreglo con todos los chars del string (sin repeticion)
+            char[] charsUnrepeated = eliminateRepetitions(str.toCharArray());
+            //creo un arreglo con la frecuencia de cada char en su lugar correspondiente
+            int[] frequencies = getFrequences(str, charsUnrepeated);
+
+
+            // creo el arbol
+            this.tree = buildTree(frequencies, charsUnrepeated);
+
+
+            //guardo en un mapa todos los caracteres con su codigo
+            getCodeMap(tree, new StringBuffer());
+
+            //escribo en el ouput el mensaje codificado
+            for (Character aChar : str.toCharArray()) {
+                output.write(codes.get(aChar).getBytes());
+            }
+            pr.println();
         }
 
-
-        //creo un arreglo con todos los chars del string (sin repeticion)
-        char[] charsUnrepeated = eliminateRepetitions(str.toCharArray());
-        //creo un arreglo con la frecuencia de cada char en su lugar correspondiente
-        int[] frequencies = getFrequences(str, charsUnrepeated);
-
-
-        // creo el arbol
-        this.tree  =  buildTree(frequencies, charsUnrepeated);
-
-
-        //guardo en un mapa todos los caracteres con su codigo
-        getCodeMap(tree, new StringBuffer());
-
-        //escribo en el ouput el mensaje codificado
-        for (Character aChar: str.toCharArray()) {
-            output.write(codes.get(aChar).getBytes());
-        }
-
+        pr.flush();
 
 
     }
@@ -51,24 +49,25 @@ public class Huffman implements anaydis.compression.Compressor {
     @Override
     public void decode(@NotNull InputStream input, @NotNull OutputStream output) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(input));
-        String line = br.readLine();
         String str = "";
+        PrintWriter pr = new PrintWriter(output);
 
-        //paso todo el archivo a un string
-        while(line!=null){
-            str+=line;
-            line = br.readLine();
-        }
+        String outputStr = "";
 
-        String code = "";
-        for (int i = 0; i < str.length(); i++) {
-            code+=str.charAt(i);
-            if(codes.containsValue(code)){
-                output.write(codes.getKey(code));
-                code = "";
+        while ((str = br.readLine()) != null) {
+            String code = "";
+            for (int i = 0; i < str.length(); i++) {
+                code += str.charAt(i);
+                if (codes.containsValue(code)) {
+                    outputStr+= codes.getKey(code);
+                    code = "";
+                }
+
             }
-
+            outputStr+="\n";
         }
+        pr.write(outputStr, 0, outputStr.length()-1);
+        pr.flush();
 
     }
 

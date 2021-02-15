@@ -23,7 +23,7 @@ public class HuffmanTester {
         huffman.encode(inputStream, outputStream);
 
         String result = outputStream.toString();
-        Assert.assertEquals("111111111110101010101010100", result);
+        Assert.assertEquals("111111111110101010101010100\n", result);
 
 
     }
@@ -49,7 +49,9 @@ public class HuffmanTester {
 
         result = newoutputStream.toString();
 
+        System.out.println(result);
 
+        Assert.assertEquals("AAAAAAAAAAABBBBBBBC", result);
 
 
 

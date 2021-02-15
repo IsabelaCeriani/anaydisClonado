@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.util.Arrays;
 
 public class BurrowsWheeler implements anaydis.compression.Compressor {
 //
@@ -40,8 +42,67 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
         dos.writeInt(index);
         pr.flush();
 
-
     }
+//
+//
+//    @Override
+//    public void decode(@NotNull InputStream inputStream, @NotNull OutputStream outputStream) throws IOException {
+//        //leo el mensaje
+//        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+//        String str = "";
+//        PrintWriter pr = new PrintWriter(outputStream);
+//
+//        //leo los bytes del inputstream y busco el indice de la primera posicion (4 bytes)
+//        byte[] indexBytes = new byte[4];
+//        inputStream.read(indexBytes);
+////        inputStream.
+//        int  firstCharPosition = ByteBuffer.wrap(indexBytes).getInt();
+//
+//
+//
+//        while ((str = br.readLine()) != null) {
+//            //ordeno L para obtener F
+//            byte[] sortedBytes = Arrays.copyOf(str.getBytes(), str.length()-4);
+//            char[] sorted = ByteBuffer.wrap(sortedBytes).asCharBuffer().array();
+//            java.util.Arrays.sort(sorted);
+//
+////            byte[] sorted = Arrays.copyOf(str.getBytes(), str.length()-4);
+////            Arrays.sort(sorted);
+////            char[] sortedChars = ByteBuffer.wrap(sorted).asCharBuffer().array();
+//
+//            //creo un array de integer(vector de transformacion)
+//            Integer[] indexes = new Integer[sorted.length];
+////            for (int i = 0; i < indexes.length; i++) {
+////                indexes[i] = i;
+////            }
+//
+//
+//
+//            //ordeno el vector de transformacion
+//            for (int i = 0; i < str.length(); i++) {
+//                for (int j = 0; j < str.length(); j++) {
+//                    if (str.charAt(i) == sorted[j]) {
+//                        indexes[j] = i;
+//                        sorted[j] = 'å';
+//                        break;
+//                    }
+//                }
+//            }
+//
+//            //empzando desde el primer indice y usando el vector para saber donde posicionarme en el str, decodifico el input y lo escribo en el output
+//            int index = firstCharPosition;
+//            for (int i = 0; i < indexes.length; i++) {
+//                pr.write(str.charAt(index));
+//                index = indexes[index];
+//            }
+//            pr.println();
+//
+//        }
+//
+//        pr.flush();
+//
+//
+//    }
 
 
     @Override
@@ -55,26 +116,24 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
         byte[] indexBytes = new byte[4];
         inputStream.read(indexBytes);
         int  firstCharPosition = ByteBuffer.wrap(indexBytes).getInt();
-        System.out.println(firstCharPosition);
-
 
 
         while ((str = br.readLine()) != null) {
+
             //ordeno L para obtener F
             char[] sorted = str.toCharArray();
             java.util.Arrays.sort(sorted);
 
             //creo un array de integer(vector de transformacion)
             Integer[] indexes = new Integer[sorted.length];
-//            for (int i = 0; i < indexes.length; i++) {
-//                indexes[i] = i;
-//            }
-
+            for (int i = 0; i < indexes.length; i++) {
+                indexes[i] = i;
+            }
 
 
             //ordeno el vector de transformacion
             for (int i = 0; i < str.length(); i++) {
-                for (int j = 0; j < str.length(); j++) {
+                for (int j = 0; j < sorted.length; j++) {
                     if (str.charAt(i) == sorted[j]) {
                         indexes[j] = i;
                         sorted[j] = 'å';

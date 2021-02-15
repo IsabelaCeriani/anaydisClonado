@@ -16,9 +16,9 @@ public class RunLengthEncodingTester {
         @Test
         public void testEncode() throws IOException {
 
-                String str = "97, 97, 97, 97, 97, 97, 97, 97, 97, 32, 97, 109, 97, 115, 97, 32, 97, 109, 97, 115, 97, 32, 97, 109, 97, 115, 97";
+//                String str = "97, 97, 97, 97, 97, 97, 97, 97, 97, 32, 97, 109, 97, 115, 97, 32, 97, 109, 97, 115, 97, 32, 97, 109, 97, 115, 97";
                 String shortString = "AAABBC";
-                InputStream inputStream = new ByteArrayInputStream(str.getBytes());
+                InputStream inputStream = new ByteArrayInputStream(shortString.getBytes());
                 OutputStream outputStream = new ByteArrayOutputStream();
 
 //
@@ -27,8 +27,8 @@ public class RunLengthEncodingTester {
 
                 String result = outputStream.toString();
 
-                System.out.println(result);;
-//                Assert.assertEquals("3A2B1C\n", result);
+//                System.out.println(result);;
+                Assert.assertEquals("3A2B1C\n", result);
 
 
         }
@@ -37,8 +37,9 @@ public class RunLengthEncodingTester {
         public void testDecode() throws IOException {
 
 
-                String shortString = "19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 1917";
-                InputStream inputStream = new ByteArrayInputStream(shortString.getBytes());
+//                String shortString = "19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 19171,1 13121,1 19171,1 1110191,1 19171,1 21151,1 1917";
+               String str = "3A2B1C\n";
+                InputStream inputStream = new ByteArrayInputStream(str.getBytes());
                 OutputStream outputStream = new ByteArrayOutputStream();
 
 //
@@ -49,7 +50,7 @@ public class RunLengthEncodingTester {
 
                 System.out.println(result);
 
-//                Assert.assertEquals("AAABBC\n", result);
+                Assert.assertEquals("AAABBC", result);
 
 
 
