@@ -1,0 +1,8 @@
+ext {
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
+    commonsCollections = 'org.apache.commons:commons-collections4:4.4'
+
+    implementationDeps = [
+        commonsCollections
+    ]
+}
