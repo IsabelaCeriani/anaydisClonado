@@ -20,7 +20,6 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
 
         int index = 0;
         while ((str = br.readLine()) != null) {
-
             //genero el array de strings con todas las rotaciones
             String[] strs = new String[str.length()];
             for (int i = 0; i < strs.length; ++i) {
@@ -43,7 +42,66 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
         pr.flush();
 
     }
-//
+
+
+
+
+    @Override
+    public void decode(@NotNull InputStream inputStream, @NotNull OutputStream outputStream) throws IOException {
+        //leo el mensaje
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        String str = "";
+        PrintWriter pr = new PrintWriter(outputStream);
+
+
+
+        //leo los bytes del input setream y busco el indice de la primera posicion (4 bytes)
+        byte[] indexBytes = new byte[4];
+        inputStream.read(indexBytes);
+        int  firstCharPosition = ByteBuffer.wrap(indexBytes).getInt();
+
+        String outputStr = "";
+
+        while ((str = br.readLine()) != null) {
+
+
+            //ordeno L para obtener F
+            char[] sorted = str.toCharArray();
+            java.util.Arrays.sort(sorted);
+
+            //creo un array de integer(vector de transformacion)
+            Integer[] indexes = new Integer[sorted.length];
+//            for (int i = 0; i < indexes.length; i++) {
+//                indexes[i] = i;
+//            }
+
+
+            //ordeno el vector de transformacion
+            for (int i = 0; i < str.length(); i++) {
+                for (int j = 0; j < sorted.length; j++) {
+                    if (str.charAt(i) == sorted[j]) {
+                        indexes[j] = i;
+                        sorted[j] = 'å';
+                        break;
+                    }
+                }
+            }
+
+            //empzando desde el primer indice y usando el vector para saber donde posicionarme en el str, decodifico el input y lo escribo en el output
+
+            int index = firstCharPosition;
+            for (int i = 0; i < indexes.length; i++) {
+                pr.write(str.charAt(index));
+                index = indexes[index];
+            }
+            pr.println();
+
+        }
+
+        pr.flush();
+
+
+    }
 //
 //    @Override
 //    public void decode(@NotNull InputStream inputStream, @NotNull OutputStream outputStream) throws IOException {
@@ -70,93 +128,6 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
 ////            Arrays.sort(sorted);
 ////            char[] sortedChars = ByteBuffer.wrap(sorted).asCharBuffer().array();
 //
-//            //creo un array de integer(vector de transformacion)
-//            Integer[] indexes = new Integer[sorted.length];
-////            for (int i = 0; i < indexes.length; i++) {
-////                indexes[i] = i;
-////            }
-//
-//
-//
-//            //ordeno el vector de transformacion
-//            for (int i = 0; i < str.length(); i++) {
-//                for (int j = 0; j < str.length(); j++) {
-//                    if (str.charAt(i) == sorted[j]) {
-//                        indexes[j] = i;
-//                        sorted[j] = 'å';
-//                        break;
-//                    }
-//                }
-//            }
-//
-//            //empzando desde el primer indice y usando el vector para saber donde posicionarme en el str, decodifico el input y lo escribo en el output
-//            int index = firstCharPosition;
-//            for (int i = 0; i < indexes.length; i++) {
-//                pr.write(str.charAt(index));
-//                index = indexes[index];
-//            }
-//            pr.println();
-//
-//        }
-//
-//        pr.flush();
-//
-//
-//    }
-
-
-    @Override
-    public void decode(@NotNull InputStream inputStream, @NotNull OutputStream outputStream) throws IOException {
-        //leo el mensaje
-        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-        String str = "";
-        PrintWriter pr = new PrintWriter(outputStream);
-
-        //leo los bytes del input setream y busco el indice de la primera posicion (4 bytes)
-        byte[] indexBytes = new byte[4];
-        inputStream.read(indexBytes);
-        int  firstCharPosition = ByteBuffer.wrap(indexBytes).getInt();
-
-
-        while ((str = br.readLine()) != null) {
-
-            //ordeno L para obtener F
-            char[] sorted = str.toCharArray();
-            java.util.Arrays.sort(sorted);
-
-            //creo un array de integer(vector de transformacion)
-            Integer[] indexes = new Integer[sorted.length];
-            for (int i = 0; i < indexes.length; i++) {
-                indexes[i] = i;
-            }
-
-
-            //ordeno el vector de transformacion
-            for (int i = 0; i < str.length(); i++) {
-                for (int j = 0; j < sorted.length; j++) {
-                    if (str.charAt(i) == sorted[j]) {
-                        indexes[j] = i;
-                        sorted[j] = 'å';
-                        break;
-                    }
-                }
-            }
-
-            //empzando desde el primer indice y usando el vector para saber donde posicionarme en el str, decodifico el input y lo escribo en el output
-            int index = firstCharPosition;
-            for (int i = 0; i < indexes.length; i++) {
-                pr.write(str.charAt(index));
-                index = indexes[index];
-            }
-            pr.println();
-
-        }
-
-        pr.flush();
-
-
-    }
-
 
 
 }
