@@ -25,11 +25,11 @@ public class BurrowsWheeler implements anaydis.compression.Compressor {
             for (int i = 0; i < strs.length; ++i) {
                 strs[i] = str.substring(i) + str.substring(0, i);
             }
-            //los ordeno de manera que sus iniciales esten en orden alfabetico creciente
+            //los ordeno de manera que sus iniciales esten en orden alfabetico creciente (f)
             java.util.Arrays.sort(strs);
 
 
-            //genero el output (String formado por el ultimo char de cada string del arreglo + la posicion del primer char del input original)
+            //genero el output (String formado por el ultimo char de cada string del arreglo + la posicion del primer char del input original) (l)
             for (int i = 0; i < strs.length; ++i) {
                 pr.write(strs[i].charAt(strs[i].length() - 1));
                 if (strs[i].charAt(strs[i].length() - 1) == str.charAt(0)) index = i;

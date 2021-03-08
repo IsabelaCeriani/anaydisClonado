@@ -18,13 +18,19 @@ public class Huffman implements anaydis.compression.Compressor {
         BufferedReader br = new BufferedReader(new InputStreamReader(input));
         String str = "";
         PrintWriter pr = new PrintWriter(output);
+        String text = "";
 
         while ((str = br.readLine()) != null) {
+            text+=str;
+            text+="\n";
+        }
+        text = text.substring(0, text.length()-1);
+
 
             //creo un arreglo con todos los chars del string (sin repeticion)
-            char[] charsUnrepeated = eliminateRepetitions(str.toCharArray());
+            char[] charsUnrepeated = eliminateRepetitions(text.toCharArray());
             //creo un arreglo con la frecuencia de cada char en su lugar correspondiente
-            int[] frequencies = getFrequences(str, charsUnrepeated);
+            int[] frequencies = getFrequences(text, charsUnrepeated);
 
 
             // creo el arbol
@@ -35,11 +41,11 @@ public class Huffman implements anaydis.compression.Compressor {
             getCodeMap(tree, new StringBuffer());
 
             //escribo en el ouput el mensaje codificado
-            for (Character aChar : str.toCharArray()) {
-                output.write(codes.get(aChar).getBytes());
+            for (Character aChar : text.toCharArray()) {
+                pr.write(codes.get(aChar));
             }
             pr.println();
-        }
+
 
         pr.flush();
 
@@ -52,21 +58,18 @@ public class Huffman implements anaydis.compression.Compressor {
         String str = "";
         PrintWriter pr = new PrintWriter(output);
 
-        String outputStr = "";
-
         while ((str = br.readLine()) != null) {
             String code = "";
             for (int i = 0; i < str.length(); i++) {
                 code += str.charAt(i);
                 if (codes.containsValue(code)) {
-                    outputStr+= codes.getKey(code);
+                    pr.write(codes.getKey(code));
                     code = "";
                 }
 
             }
-            outputStr+="\n";
+            pr.println();
         }
-        pr.write(outputStr, 0, outputStr.length()-1);
         pr.flush();
 
     }

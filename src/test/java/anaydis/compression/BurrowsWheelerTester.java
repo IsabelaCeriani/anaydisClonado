@@ -34,7 +34,7 @@ public class BurrowsWheelerTester {
 //    public void testDecode() throws IOException {
 //
 ////        String str = "DRDOBBS";
-//        String str = "97, 115, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 32, 97, 109, 97, 115, 97, 32";
+//        String str = "78, 97, 115, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 32, 97, 109, 97, 115, 97, 32";
 //        InputStream inputStream = new ByteArrayInputStream(str.getBytes());
 //        OutputStream outputStream = new ByteArrayOutputStream();
 //
