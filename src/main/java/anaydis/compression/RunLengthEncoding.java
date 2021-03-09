@@ -43,24 +43,24 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
         String str = "";
         PrintWriter pr = new PrintWriter(output);
 
-//        String aux = "";
+        String aux = "";
 
         while ((str = br.readLine())!= null) {
         for (int i = 0; i < str.length(); i+=2) {
             int count = Character.getNumericValue(str.charAt(i));
             int j = 0;
             while (j < count) {
-                pr.write(str.charAt(i+1));
-//                aux+= str.charAt(i+1);
+//                pr.write(str.charAt(i+1));
+                aux+= str.charAt(i+1);
                 j++;
             }
         }
-//        aux+="\n";
-            pr.println();
+        aux+="\n";
 
         }
+//        aux = aux.substring(0, aux.length()-1);
 
-//        pr.write(aux, 0, aux.length()-1);
+        pr.write(aux, 0, aux.length()-1);
 
 
 
