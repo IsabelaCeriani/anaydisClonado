@@ -58,9 +58,9 @@ public class RunLengthEncoding implements anaydis.compression.Compressor{
         aux+="\n";
 
         }
-//        aux = aux.substring(0, aux.length()-1);
+        aux = aux.substring(0, aux.length()-1);
 
-        pr.write(aux, 0, aux.length()-1);
+        pr.write(aux);
 
 
 
